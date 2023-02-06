@@ -1,0 +1,132 @@
+﻿html, body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+/*----------- Navbar -------------*/
+
+.navbar {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+}
+
+/*--------------------------------*/
+
+
+
+
+
+.navbar {
+    font-size: 2rem;
+}
+
+.navbar-link {
+    position: relative;
+}
+
+.navbar-link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #ff6a00;
+    background-size: 2000%;
+    z-index: -1;
+    transform: rotate(45deg);
+}
+
+.navbar-link2 {
+    background: #ff6a99;
+}
+
+/*--------------------------------*/
+
+
+/*.item-card:hover {
+    --box-shadow-color: linear-gradient(45deg, #ff00aa 0%, #00ccff 25%, #00ff00 50%, #ffbb00 75%, #ff0000 100%) !important;
+    
+    cursor: pointer;
+
+    
+}*/
+
+.item-card::before::before {
+    --p: 30deg;
+    content: '';
+  display: block;
+  z-index: 1;
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+   border-radius: inherit;
+    background: linear-gradient(var(--p), #000099, #660099) 0 0 repeat;
+  animation: rotate-gradient linear 10s infinite;
+    filter: blur(5px);
+    overflow:hidden;
+    top: -50%;
+  left: -50%;
+    /*content: "";
+    position: absolute;
+    border-radius: 30px;
+    
+    overflow: hidden;
+    width: calc(100% + 10px);
+    height: 50px;
+    background: linear-gradient(45deg, #000099 0%, #660099 100%);
+    background-size: 400%;
+    z-index: 1;
+
+  animation: rotate-gradient linear 10s infinite;*/
+}
+
+@keyframes rotate-gradient {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+    /*animation: search-div-animation 2s infinite linear;*/
+    /*animation-name: rotate-gradient;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+        */
+
+
+
+
+a.link {
+    text-decoration: none;
+    color: inherit;
+}
+
+/*----------- Podium -------------*/
+
+.first-place {
+    color: #FFD700
+}
+
+.second-place {
+    color: #C0C0C0
+}
+
+.third-place {
+    color: #CB6D51
+}
+
+/*---------------------------------*/
+
+
+@font-face {
+    font-family: 'Eurovision';
+    src: url('../fonts/Eurotype2016.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Gotham Book';
+    src: url('../fonts/GothamBook.ttf') format('truetype');
+}

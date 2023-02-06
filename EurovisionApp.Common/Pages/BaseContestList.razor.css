@@ -1,0 +1,44 @@
+﻿.title {
+    margin-bottom: 20px;
+    font-family: Eurovision;
+    font-size: 5vw;
+    font-weight: bold;
+    text-align: center;
+}
+
+input {
+    padding: 10px 20px 10px 20px;
+    width: calc(100% - 40px);
+    font-size: 1.4rem;
+    border-radius: 100px;
+}
+
+.contest-list {
+    display: grid;
+    margin: 25px 0;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 25px;
+    justify-content: center;
+}
+
+.item-card {
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: Gotham Book;
+}
+
+.item-card span {
+    font-weight: bold;
+}
+
+.item-card {
+    padding: 10px;
+    background: white;
+    box-shadow: 0px 0px 10px black;
+    border-radius: 25px;
+}
+
+.item-card:hover {
+    cursor: pointer;
+    box-shadow: 0 0 20px darkblue;
+}

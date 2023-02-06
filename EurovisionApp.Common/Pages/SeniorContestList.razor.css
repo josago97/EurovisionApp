@@ -1,0 +1,24 @@
+﻿input {
+    width: 100%;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    padding: 0 10px 0 10px;
+}
+
+.contest-list {
+    margin: 25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 25px;
+    justify-content: center;
+}
+
+.item-card {
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: Gotham Book;
+}
+
+.item-card span {
+    font-weight: bold;
+}

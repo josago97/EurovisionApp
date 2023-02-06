@@ -1,0 +1,24 @@
+﻿<div class="title">@Title</div>
+
+<div>
+    <input type="text" placeholder="Search..." @oninput="@(args => Search(args.Value.ToString()))"/>
+
+    <div class="contest-list">
+        @for (int i = 0; i < Contests.Count; i++)
+        {
+            var contest = Contests[i];
+
+            <a class="link" href=@($"senior/{i}")>
+                <div class="item-card">
+                
+                    <EurovisionTitle Country="@contest.Country"/>
+                    <span>@contest.City.ToUpper() @contest.Year</span>
+                
+                </div>
+            </a>
+        }
+    </div>
+</div>
+
+
+

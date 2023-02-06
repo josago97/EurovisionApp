@@ -1,0 +1,50 @@
+﻿@inherits LayoutComponentBase
+
+<div class="navbar">
+    <div class="title">Eurovision</div>
+    <a class="link link-1" href="senior">
+        <div>Senior</div>
+    </a>
+    <a class="link link-2" href="junior">
+        <div>Junior</div>
+    </a>
+</div>
+
+@if (@Ready)
+{
+    <main>@Body</main>
+}
+else
+{
+    <h1>Loading...</h1>
+}
+
+<div class="page">
+
+    
+
+    <!--
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>-->
+</div>
+
+@code {
+
+
+    [Inject]
+    public Logic.Data.IRepository Repository { get; set; }
+    private bool Ready { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Repository.InitAsync();
+        Ready = true;
+    }
+}
