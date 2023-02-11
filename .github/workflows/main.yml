@@ -8,55 +8,27 @@ env:
   PROJECT_NAME: EurovisionApp.Wasm
   REPO_NAME: ${{ github.event.repository.name }}
 
-on:
-  push:
-    branches: [ "main" ]
-  workflow_dispatch:
-  
-  
-
-jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 6.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
-      
-    
-
-# Run workflow on every push to the master branch
 on: 
   push: 
     branches:
       - main
   workflow_dispatch:
-
+  
 jobs:
   deploy-to-github-pages:
     # use ubuntu-latest image to run steps on
     runs-on: ubuntu-latest
     steps:
     # uses GitHub's checkout action to checkout code form the master branch
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     
     # sets up .NET SDK
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v3.0.3
       with:
         dotnet-version: | 
-            6.0.x
-            7.0.x
+            6.0.X
+            7.0.X
      # Install wasm-tools
     - name: Install wasm-tools
       run: dotnet workload install wasm-tools
@@ -72,9 +44,8 @@ jobs:
         find . -name "*.html" | while read htmlFile; do
             sed -i 's/<base href="\/"/<base href="\/${{ env.REPO_NAME }}\/"/g' $htmlFile
         done
-    
-      
-    # Fix integrity errors
+  
+      # Fix integrity errors
     - name: Fix service-worker-assets.js hashes
       working-directory: release/wwwroot
       run: |
