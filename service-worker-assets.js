@@ -53,19 +53,19 @@
       "url": "css\/open-iconic\/README.md"
     },
     {
-      "hash": "sha256-4mWsDy3aHl36ZbGt8zByK7Pvd4kRUoNgTYzRnwmPHwg=",
+      "hash": "sha256-NaClBPmLBHi2NLXsHlC\/RXe3StZcDjDwRVjlwjyN0XY=",
       "url": "favicon.png"
     },
     {
-      "hash": "sha256-DbpQaq68ZSb5IoPosBErM1QWBfsbTxpJqhU0REi6wP4=",
+      "hash": "sha256-BC7oul7FwWY56q8vxIgbkOf2WAOl4MZWJf11LwNAxuI=",
       "url": "icon-192.png"
     },
     {
-      "hash": "sha256-oEo6d+KqX5fjxTiZk\/w9NB3Mi0+ycS5yLwCKwr4IkbA=",
+      "hash": "sha256-Xfgq3dERc9ksny4XNjxuS2SyYQqtspRSA+JikO2FsiQ=",
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-A9ylrLp1k2+fevJPkL0W6cm908djosjkYfOYUW0GDlM=",
+      "hash": "sha256-Na62dG9J1+ZwcAKI4d7nx63CzUfDYAeB6xrqTxGDjCc=",
       "url": "index.html"
     },
     {
@@ -299,6 +299,10 @@
     {
       "hash": "sha256-dCNZ1HUTGnX\/BXIkFRx7OE7wuJVWIScJpeNKlAmYOHY=",
       "url": "_content\/EurovisionApp.Common\/fonts\/GothamBook.ttf"
+    },
+    {
+      "hash": "sha256-0wJXZZsNq8YgxfYmZBtXnQqIj6QO85w+SOPxZOJYHQo=",
+      "url": "_content\/EurovisionApp.Common\/images\/favicon.png"
     },
     {
       "hash": "sha256-5BHIHbm6np1OB44yzJuVHvy64mNrbuq7N\/bLqfGX530=",
@@ -737,5 +741,5 @@
       "url": "_content\/EurovisionApp.Common\/index.html"
     }
   ],
-  "version": "Kin8Cb6C"
+  "version": "ipKqFNQI"
 };
