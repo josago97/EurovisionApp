@@ -7,11 +7,11 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "EurovisionApp.Common.dll": "sha256-SUrVl3bgbrpXrvIcyGBS6Czo1tOiPryhXPGHu\/oeqR0=",
-      "EurovisionApp.Wasm.dll": "sha256-bgixSwdAm3fsvwD8gliQn\/pdCxQy+lHrlRZECqwM+Sw=",
-      "Microsoft.AspNetCore.Components.dll": "sha256-hgtfco+1ro7YleUgKi\/+Jv1j9WJ7vpBX4WN3zf07v9Q=",
+      "EurovisionApp.Common.dll": "sha256-jh\/EVaQccavu2RYX\/TD38k4DUo0O4MyNZxSdgwlCl8Y=",
+      "EurovisionApp.Wasm.dll": "sha256-0caLTDdKYe2a1J8d\/+Ba5xp49O65ScVASf0P5vpGz5M=",
+      "Microsoft.AspNetCore.Components.dll": "sha256-Ga+pde1zpcIYWi7plfKvPrcrxBRTYhIUg0GC8SVsUH4=",
       "Microsoft.AspNetCore.Components.QuickGrid.dll": "sha256-PW\/wHFaTp8vYiuguHaQ3AwRZufEAL3poOUlA2LvA0BA=",
-      "Microsoft.AspNetCore.Components.Web.dll": "sha256-R2HamU4elLofEN9911RWmgRmbcIwCz8aHjWvfRxEo3c=",
+      "Microsoft.AspNetCore.Components.Web.dll": "sha256-OFIIwqrZ3MiNdvBpO+qJsp7lj8fbzDPTtXnZgv1Iqmo=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-2Jg3mQhCSyqkofbgXHMRw0whL7fAl07+VKYd0lApk7I=",
       "Microsoft.Extensions.Configuration.Abstractions.dll": "sha256-X\/f4fDl2cuIRXeWHhK\/f2UqQbFioD+RU4a4CEh0zrrQ=",
       "Microsoft.Extensions.Configuration.dll": "sha256-DBOKSPriP2JDxVbbWrLXyD3K4\/x3RBifNBWk\/q1I39M=",
@@ -36,8 +36,8 @@
       "System.Net.Http.dll": "sha256-t19DCxDxdfh8b+ydCaoEbCBMkHcHFvK3p5zd1dOfaT8=",
       "System.Net.Http.Json.dll": "sha256-DKt8+1ZKAo7+skSyvaUOnIjsg1m3Exs07cj9I9oQ0SI=",
       "System.Net.Primitives.dll": "sha256-9HPX58vRDB8MH55CDzizwlJP0siDBfwdA8zRMlHVfhU=",
-      "System.Private.CoreLib.dll": "sha256-bWW28KJGCp9MhfByY9uYv1S\/FK50tYJkanKX3TTV9Uk=",
-      "System.Private.Uri.dll": "sha256-Xl52Y90MbHaQg0LdCPmKJ8rFJm+B7NT067vWI\/okhr0=",
+      "System.Private.CoreLib.dll": "sha256-wPiZTn6ZMM6Gq7hOhAexh4pkn+AySPyHuzMzuH34eJQ=",
+      "System.Private.Uri.dll": "sha256-uPv2xbViu0+ogOEM0GfoZK5Ce4zVcMFLBs6hKZXkfA4=",
       "System.Runtime.dll": "sha256-mNGxUgpGO0BV2SwugU\/fj7WgAvZfBpqV7PQbUllLN6o=",
       "System.Runtime.InteropServices.JavaScript.dll": "sha256-BPqE6NqU82guV5Qguh5jIghbFK\/CaIYUARPOd6Bsz5M=",
       "System.Text.Encodings.Web.dll": "sha256-JGA6QMOu51S10XvvKzUagD7fMdj5BfSAOf2IYmVtNx8=",
@@ -52,12 +52,12 @@
     "runtime": {
       "dotnet.7.0.2.qkfmj81bw1.js": "sha256-ru4MDisi7cFWiJIM\/eeO1GoZhyr8GqkdA5zVQ1jRGsQ=",
       "dotnet.timezones.blat": "sha256-ics+RIevvtH3z9plMxv4\/GSMK9+LKYd9sy3FRRI5qTI=",
-      "dotnet.wasm": "sha256-fmRwuNM7OI7egyljEITlS9o7var8v\/j1HIf2qV22kRs="
+      "dotnet.wasm": "sha256-FhtPCX9v93cTZ+DO344ZG9IJF\/7AUqUa8r6Pg0CaZ8Q="
     },
     "runtimeAssets": {
       "dotnet.wasm": {
         "behavior": "dotnetwasm",
-        "hash": "sha256-fmRwuNM7OI7egyljEITlS9o7var8v\/j1HIf2qV22kRs="
+        "hash": "sha256-FhtPCX9v93cTZ+DO344ZG9IJF\/7AUqUa8r6Pg0CaZ8Q="
       }
     },
     "satelliteResources": null

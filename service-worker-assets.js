@@ -81,19 +81,19 @@
       "url": "_framework\/dotnet.timezones.blat"
     },
     {
-      "hash": "sha256-9H2Lk1Bvg5WGDDsMVzMxNlkUSFJFK1bDv49T5HQ28K8=",
+      "hash": "sha256-HIQlSRn\/+AOOa863cx8cFxaxJC7QnzRJhCfIueBb4PA=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-SUrVl3bgbrpXrvIcyGBS6Czo1tOiPryhXPGHu\/oeqR0=",
+      "hash": "sha256-jh\/EVaQccavu2RYX\/TD38k4DUo0O4MyNZxSdgwlCl8Y=",
       "url": "_framework\/EurovisionApp.Common.dll"
     },
     {
-      "hash": "sha256-bgixSwdAm3fsvwD8gliQn\/pdCxQy+lHrlRZECqwM+Sw=",
+      "hash": "sha256-0caLTDdKYe2a1J8d\/+Ba5xp49O65ScVASf0P5vpGz5M=",
       "url": "_framework\/EurovisionApp.Wasm.dll"
     },
     {
-      "hash": "sha256-hgtfco+1ro7YleUgKi\/+Jv1j9WJ7vpBX4WN3zf07v9Q=",
+      "hash": "sha256-Ga+pde1zpcIYWi7plfKvPrcrxBRTYhIUg0GC8SVsUH4=",
       "url": "_framework\/Microsoft.AspNetCore.Components.dll"
     },
     {
@@ -101,7 +101,7 @@
       "url": "_framework\/Microsoft.AspNetCore.Components.QuickGrid.dll"
     },
     {
-      "hash": "sha256-R2HamU4elLofEN9911RWmgRmbcIwCz8aHjWvfRxEo3c=",
+      "hash": "sha256-OFIIwqrZ3MiNdvBpO+qJsp7lj8fbzDPTtXnZgv1Iqmo=",
       "url": "_framework\/Microsoft.AspNetCore.Components.Web.dll"
     },
     {
@@ -201,11 +201,11 @@
       "url": "_framework\/System.Net.Primitives.dll"
     },
     {
-      "hash": "sha256-bWW28KJGCp9MhfByY9uYv1S\/FK50tYJkanKX3TTV9Uk=",
+      "hash": "sha256-wPiZTn6ZMM6Gq7hOhAexh4pkn+AySPyHuzMzuH34eJQ=",
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
-      "hash": "sha256-Xl52Y90MbHaQg0LdCPmKJ8rFJm+B7NT067vWI\/okhr0=",
+      "hash": "sha256-uPv2xbViu0+ogOEM0GfoZK5Ce4zVcMFLBs6hKZXkfA4=",
       "url": "_framework\/System.Private.Uri.dll"
     },
     {
@@ -237,7 +237,7 @@
       "url": "_framework\/dotnet.7.0.2.qkfmj81bw1.js"
     },
     {
-      "hash": "sha256-fmRwuNM7OI7egyljEITlS9o7var8v\/j1HIf2qV22kRs=",
+      "hash": "sha256-FhtPCX9v93cTZ+DO344ZG9IJF\/7AUqUa8r6Pg0CaZ8Q=",
       "url": "_framework\/dotnet.wasm"
     },
     {
@@ -245,7 +245,7 @@
       "url": "_content\/Microsoft.AspNetCore.Components.QuickGrid\/Microsoft.AspNetCore.Components.QuickGrid.bundle.scp.css"
     },
     {
-      "hash": "sha256-fdVA5MuFblXuiO6KGjwA1NDf4zZ7BnaZTPfFicbOEm8=",
+      "hash": "sha256-jIznxkHBp2uUB2KjFAqEYblFps+D5sr\/ogBljy0Zx+c=",
       "url": "_content\/EurovisionApp.Common\/EurovisionApp.Common.bundle.scp.css"
     },
     {
@@ -269,7 +269,7 @@
       "url": "_content\/EurovisionApp.Common\/css\/app_tablet.css"
     },
     {
-      "hash": "sha256-umCooK2wQuFK8mJsDjfdA+yKnJTyJEvmTc5XhnvWsP4=",
+      "hash": "sha256-76f+zsZS3hV9blB1BxoEslRxQa+VEoEKa2NLuVKVkKI=",
       "url": "_content\/EurovisionApp.Common\/css\/app.css"
     },
     {
@@ -741,5 +741,5 @@
       "url": "_content\/EurovisionApp.Common\/index.html"
     }
   ],
-  "version": "AmTPLF9M"
+  "version": "UGSBxmsz"
 };
