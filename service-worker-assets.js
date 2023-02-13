@@ -245,7 +245,7 @@
       "url": "_content\/Microsoft.AspNetCore.Components.QuickGrid\/Microsoft.AspNetCore.Components.QuickGrid.bundle.scp.css"
     },
     {
-      "hash": "sha256-LOPpovXauYQR2DvT8XdHx0C2azrVbJqrl+\/NGH+B4rc=",
+      "hash": "sha256-bLq5EmgEj0w23RmFYR9cErNlR6AISFE0iHNM1BkXCig=",
       "url": "_content\/EurovisionApp.Common\/EurovisionApp.Common.bundle.scp.css"
     },
     {
@@ -261,15 +261,15 @@
       "url": "_content\/EurovisionApp.Common\/css\/app_desktop.css"
     },
     {
-      "hash": "sha256-T7mnmZSZjJDUUn\/cwqCTYMvm1Wj8nV4MEaYraia4GF0=",
+      "hash": "sha256-IjA\/7NUAsws\/dD9qn0B805WIzMhT1jzmRIF1hN8l3Vk=",
       "url": "_content\/EurovisionApp.Common\/css\/app_mobile.css"
     },
     {
-      "hash": "sha256-bpWe\/EPy4vjbbaTqVE9LO9v1tmMnnV680reIbYDFR\/4=",
+      "hash": "sha256-ivOKRbugSrpyva6X9ILwAlc3LNzxDsgVTpcvXLY1VYI=",
       "url": "_content\/EurovisionApp.Common\/css\/app_tablet.css"
     },
     {
-      "hash": "sha256-76f+zsZS3hV9blB1BxoEslRxQa+VEoEKa2NLuVKVkKI=",
+      "hash": "sha256-hgbpdICm\/bjgTbRHmisw9NfXU1aqTFsOt0E3gywemwA=",
       "url": "_content\/EurovisionApp.Common\/css\/app.css"
     },
     {
@@ -741,5 +741,5 @@
       "url": "_content\/EurovisionApp.Common\/index.html"
     }
   ],
-  "version": "yUDeqGbT"
+  "version": "HVCmart\/"
 };

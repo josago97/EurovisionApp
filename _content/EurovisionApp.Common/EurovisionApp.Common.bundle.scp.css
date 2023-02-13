@@ -227,7 +227,7 @@ main[b-emskss0lbm] {
 /*========== Burguer Button =========*/
 
 .icon-burguer[b-mv5irjltva] {
-    --icon-height: calc(var(--header-size) - 1.4em);
+    --icon-height: calc(var(--header-size) - 50px);
 
     position: relative;
     margin: auto;
@@ -240,7 +240,7 @@ main[b-emskss0lbm] {
 }
 
 .icon-burguer > div[b-mv5irjltva] {
-    --line-height: 0.1em;
+    --line-height: 3px;
 
     position: relative;
     height: var(--line-height);
@@ -322,6 +322,7 @@ main[b-emskss0lbm] {
 
     .navbar-list[b-mv5irjltva] {
         flex-direction: row;
+        font-size: inherit;
     }
 
     .link[b-mv5irjltva] {
