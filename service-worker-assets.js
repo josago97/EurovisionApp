@@ -245,7 +245,7 @@
       "url": "_content\/Microsoft.AspNetCore.Components.QuickGrid\/Microsoft.AspNetCore.Components.QuickGrid.bundle.scp.css"
     },
     {
-      "hash": "sha256-jIznxkHBp2uUB2KjFAqEYblFps+D5sr\/ogBljy0Zx+c=",
+      "hash": "sha256-LOPpovXauYQR2DvT8XdHx0C2azrVbJqrl+\/NGH+B4rc=",
       "url": "_content\/EurovisionApp.Common\/EurovisionApp.Common.bundle.scp.css"
     },
     {
@@ -741,5 +741,5 @@
       "url": "_content\/EurovisionApp.Common\/index.html"
     }
   ],
-  "version": "UGSBxmsz"
+  "version": "yUDeqGbT"
 };

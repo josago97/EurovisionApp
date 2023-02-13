@@ -177,13 +177,14 @@ main[b-emskss0lbm] {
 }
 /* _content/EurovisionApp.Common/Shared/NavMenu.razor.rz.scp.css */
 .navbar[b-mv5irjltva] {
-    --header-size: 2em;
+    --header-size: 75px;
 
     display: grid;
     grid-template-columns: auto;
     background-color: darkblue;
     color: white;
     font-family: Eurovision;
+    font-size: 2.5em;
 }
 
 .navbar *[b-mv5irjltva] {
@@ -211,8 +212,8 @@ main[b-emskss0lbm] {
 /*=================== Navbar Toggler ==================*/
 
 .navbar-toggler[b-mv5irjltva] {
-    margin: 6px;
-    padding: 6px;
+    margin: 10px;
+    padding: 10px;
     line-height: 1;
     background-color: rgba(255, 255, 255, 0.25);
     border: 2px solid white;
@@ -226,7 +227,8 @@ main[b-emskss0lbm] {
 /*========== Burguer Button =========*/
 
 .icon-burguer[b-mv5irjltva] {
-    --icon-height: calc(var(--header-size) - 1.2em);
+    --icon-height: calc(var(--header-size) - 1.4em);
+
     position: relative;
     margin: auto;
     width: calc(var(--icon-height) * 1.5);
@@ -238,7 +240,7 @@ main[b-emskss0lbm] {
 }
 
 .icon-burguer > div[b-mv5irjltva] {
-    --line-height: 0.12em;
+    --line-height: 0.1em;
 
     position: relative;
     height: var(--line-height);
