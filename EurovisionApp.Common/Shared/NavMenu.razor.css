@@ -1,70 +1,183 @@
-/*
+.navbar {
+    --header-size: 2em;
+
+    display: grid;
+    grid-template-columns: auto;
+    background-color: darkblue;
+    color: white;
+    font-family: Eurovision;
+}
+
+.navbar * {
+    color: inherit;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 100%;
+    justify-content: space-between;
+    height: var(--header-size);
+}
+
+.title {
+    padding: 5px 0px;
+    display: inline-block;
+    height: 100%;
+}
+
+.title img {
+    height: 100%;
+}
+
+/*=================== Navbar Toggler ==================*/
+
 .navbar-toggler {
-    background-color: rgba(255, 255, 255, 0.1);
+    margin: 6px;
+    padding: 6px;
+    line-height: 1;
+    background-color: rgba(255, 255, 255, 0.25);
+    border: 2px solid white;
+    border-radius: 0.2em;
+    transition: box-shadow .15s;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
 }
 
-.top-row {
-    height: 3.5rem;
-    background-color: rgba(0,0,0,0.4);
+/*========== Burguer Button =========*/
+
+.icon-burguer {
+    --icon-height: calc(var(--header-size) - 1.2em);
+    position: relative;
+    margin: auto;
+    width: calc(var(--icon-height) * 1.5);
+    height: var(--icon-height);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    cursor: pointer;
 }
 
-.navbar-brand {
-    font-size: 1.1rem;
+.icon-burguer > div {
+    --line-height: 0.12em;
+
+    position: relative;
+    height: var(--line-height);
+    background-color: #fff;
+    transition: 0.5s;
+    border-radius: var(--line-height);
 }
 
-.oi {
-    width: 2rem;
-    font-size: 1.1rem;
-    vertical-align: text-top;
-    top: -2px;
+/*============== Burguer Button Animation ================*/
+
+#navbar-toggler-input {
+    display: none;
 }
 
-.nav-item {
-    font-size: 0.9rem;
-    padding-bottom: 0.5rem;
+#navbar-toggler-input:checked ~ .icon-burguer > div {
+    --offset: calc(calc(var(--icon-height) - var(--line-height)) / 2);
 }
 
-    .nav-item:first-of-type {
-        padding-top: 1rem;
+#navbar-toggler-input:checked ~ .icon-burguer > div:nth-child(1) {
+    transform: translateY(var(--offset)) rotate(45deg);
+}
+
+#navbar-toggler-input:checked ~ .icon-burguer > div:nth-child(2) {
+    opacity: 0;
+}
+
+#navbar-toggler-input:checked ~ .icon-burguer > div:nth-child(3) {
+    transform: translateY(calc(var(--offset) / -1)) rotate(-45deg);
+}
+
+/*=============================================*/
+
+.navbar-list {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.link {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    padding: 0.25em 1em;
+    background: var(--background-color);
+    color: inherit;
+    text-decoration: none;
+}
+
+.link:hover {
+    --background-color: #CCCCFF;
+    color: black;
+}
+
+.link-1 {
+    --background-color: #6600FF;
+}
+
+.link-2 {
+    --background-color: #9933FF;
+}
+
+.collapse {
+    display: none;
+}
+
+@media (min-width: 600px) {
+    .navbar {
+        display: grid;
+        grid-template-columns: 1fr auto auto;
     }
 
-    .nav-item:last-of-type {
-        padding-bottom: 1rem;
+    .header {
+        display: inherit;
     }
 
-    .nav-item ::deep a {
-        color: #d7d7d7;
-        border-radius: 4px;
-        height: 3rem;
-        display: flex;
-        align-items: center;
-        line-height: 3rem;
-    }
-
-.nav-item ::deep a.active {
-    background-color: rgba(255,255,255,0.25);
-    color: white;
-}
-
-.nav-item ::deep a:hover {
-    background-color: rgba(255,255,255,0.1);
-    color: white;
-}
-
-@media (min-width: 641px) {
     .navbar-toggler {
         display: none;
     }
 
-    .collapse {
-        /* Never collapse the sidebar for wide screens */
-      /*  display: block;
+    .navbar-list {
+        flex-direction: row;
     }
-    
-    .nav-scrollable {
-        /* Allow sidebar to scroll for tall menus */
-       /* height: calc(100vh - 3.5rem);
-        overflow-y: auto;
+
+    .link {
+        --border-size: 1.5em;
+
+        position: relative;
+    }
+
+    .link::before {
+        content: "";
+        position: absolute;
+        border-left: var(--border-size) solid transparent;
+        border-right: 0px solid transparent;
+        border-top: var(--header-size) solid var(--background-color);
+        left: calc(var(--border-size) * -1);
+        top: 0;
+    }
+
+    .link:not(:last-of-type)::after {
+        content: "";
+        position: absolute;
+        border-right: var(--border-size) solid transparent;
+        border-left: 0px solid transparent;
+        border-bottom: var(--header-size) solid var(--background-color);
+        right: calc(var(--border-size) * -1);
+        bottom: 0;
+    }
+
+    .link-2 {
+        margin-left: calc(var(--border-size) - 1px);
+    }
+
+    .collapse {
+        display: initial !important;
     }
 }
-*/
+
+
+

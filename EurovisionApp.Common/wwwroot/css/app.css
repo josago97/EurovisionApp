@@ -6,11 +6,15 @@ body {
     margin: 0;
 }
 
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
 /*----------- Navbar -------------*/
 
 .navbar {
-    display: grid;
-    grid-template-columns: 1fr auto auto;
+    /*display: grid;
+    grid-template-columns: 1fr auto auto;*/
 }
 
 /*--------------------------------*/
