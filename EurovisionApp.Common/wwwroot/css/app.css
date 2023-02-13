@@ -10,43 +10,8 @@ body {
     box-sizing: border-box;
 }
 
-/*----------- Navbar -------------*/
-
-.navbar {
-    /*display: grid;
-    grid-template-columns: 1fr auto auto;*/
-}
-
-/*--------------------------------*/
 
 
-
-
-
-.navbar {
-    font-size: 2rem;
-}
-
-.navbar-link {
-    position: relative;
-}
-
-.navbar-link::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #ff6a00;
-    background-size: 2000%;
-    z-index: -1;
-    transform: rotate(45deg);
-}
-
-.navbar-link2 {
-    background: #ff6a99;
-}
-
-/*--------------------------------*/
 
 
 /*.item-card:hover {

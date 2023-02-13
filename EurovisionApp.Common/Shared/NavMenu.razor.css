@@ -49,7 +49,7 @@
 /*========== Burguer Button =========*/
 
 .icon-burguer {
-    --icon-height: calc(var(--header-size) - 1.4em);
+    --icon-height: calc(var(--header-size) - 50px);
 
     position: relative;
     margin: auto;
@@ -62,7 +62,7 @@
 }
 
 .icon-burguer > div {
-    --line-height: 0.1em;
+    --line-height: 3px;
 
     position: relative;
     height: var(--line-height);
@@ -144,6 +144,7 @@
 
     .navbar-list {
         flex-direction: row;
+        font-size: inherit;
     }
 
     .link {
