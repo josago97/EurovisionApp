@@ -22,6 +22,31 @@
     font-weight: bold;
     text-transform: uppercase;
 }
+/* _content/EurovisionApp.Common/Pages/ContestantDetails.razor.rz.scp.css */
+.title[b-jb8rm7pqpp] {
+    display: flex;
+    flex-flow: row;
+    gap: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.title p[b-jb8rm7pqpp] {
+    margin: 0.5em 0;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+[b-jb8rm7pqpp] .title img {
+    width: 6em;
+}
+
+@media (max-width: 600px) {
+    [b-jb8rm7pqpp] .title img {
+        display: none;
+    }
+}
 /* _content/EurovisionApp.Common/Pages/ContestDetails.razor.rz.scp.css */
 #main[b-wxfmknxex4] {
     max-width: 800px;
@@ -192,6 +217,53 @@ input[b-8jkh0kaqiz] {
     box-shadow: 0 0 20px darkblue;
 }
 /* _content/EurovisionApp.Common/Shared/MainLayout.razor.rz.scp.css */
+.loading-container[b-emskss0lbm] {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.loading-container img[b-emskss0lbm] {
+    width: 70vmin;
+    filter: invert(100%);
+}
+
+.loading-container .message[b-emskss0lbm] {
+    display: flex;
+    flex-flow: row;
+    gap: 2vmin;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-container .message p[b-emskss0lbm] {
+    margin: 5px 0 0 0;
+    font-size: 5vmin;
+    font-weight: bold;
+}
+
+.loading-container .spinner[b-emskss0lbm] {
+    width: 6vmin;
+    height: 6vmin;
+    border: 0.7vmin solid black;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation-b-emskss0lbm 1s linear infinite;
+}
+
+@keyframes rotation-b-emskss0lbm {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+} 
 /* _content/EurovisionApp.Common/Shared/NavMenu.razor.rz.scp.css */
 .navbar[b-mv5irjltva] {
     --header-size: 70px;
