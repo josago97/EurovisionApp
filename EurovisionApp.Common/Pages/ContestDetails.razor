@@ -38,7 +38,7 @@
             <div class="subtitle">@round.Name</div>
 
             <QuickGrid Items="@round.Contestants.AsQueryable()">
-                <TemplateColumn Title="Place"
+                <TemplateColumn Title=@(HasPlaceColumnSmall ? "#" : "Place")
                     SortBy="GridSort<ContestantData>.ByAscending(c => c.Place)" 
                     IsDefaultSort="SortDirection.Ascending"
                     Align="Align.Center">
@@ -66,20 +66,20 @@
                         <div class="artist">@context.Artist</div>
                     </a>
                 </TemplateColumn>
-                <TemplateColumn Title="Running"
-                    SortBy="GridSort<ContestantData>.ByAscending(c => c.Running)" 
-                    IsDefaultSort="SortDirection.Ascending"
-                    Align="Align.Center">
-                    <a class="link" href=@($"{Path}/{@context.Id}")>
-                        @context.Running
-                    </a>
-                </TemplateColumn>
-                <TemplateColumn Title="Points"
+                <TemplateColumn Title=@(HasPointsColumnSmall ? "Pts" : "Points")
                     SortBy="GridSort<ContestantData>.ByAscending(c => c.Points)" 
                     IsDefaultSort="SortDirection.Ascending"
                     Align="Align.Center">
                     <a class="link" href=@($"{Path}/{@context.Id}")>
                         @context.Points
+                    </a>
+                </TemplateColumn>
+                <TemplateColumn Title=@(HasRunningColumnSmall ? "Run" : "Running")
+                    SortBy="GridSort<ContestantData>.ByAscending(c => c.Running)" 
+                    IsDefaultSort="SortDirection.Ascending"
+                    Align="Align.Center">
+                    <a class="link" href=@($"{Path}/{@context.Id}")>
+                        @context.Running
                     </a>
                 </TemplateColumn>
             </QuickGrid>

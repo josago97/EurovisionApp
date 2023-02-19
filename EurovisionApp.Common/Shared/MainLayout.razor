@@ -1,35 +1,26 @@
-﻿@inherits LayoutComponentBase
+﻿@using BlazorPro.BlazorSize
+@inherits LayoutComponentBase
 
-<NavMenu />
-<main>
+<MediaQueryList>
+    <NavMenu />
     @if (@Ready)
     {
-        @Body
+        <main>@Body</main>
     }
     else
     {
-        <h1>Loading...</h1>
+        <div class="loading-container">
+            <img src=@Utils.GetStaticFileUrl("images/eurovision_logo.png") />
+            <div class="message">
+                <p>Loading</p><span class="spinner"></span>
+            </div>
+        </div>
     }
-</main>
 
-<div class="page">
-
-    
-
-    <!--
-    <div class="sidebar">
-        <NavMenu />
-    </div>
-
-    <main>
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>-->
-</div>
+    <div class="page"></div>
+</MediaQueryList>
 
 @code {
-
 
     [Inject]
     public Logic.Data.IRepository Repository { get; set; }

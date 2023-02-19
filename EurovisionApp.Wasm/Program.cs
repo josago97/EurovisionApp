@@ -1,4 +1,3 @@
-using System.Globalization;
 using EurovisionApp.Common.Logic.Data;
 using EurovisionApp.Wasm.Logic;
 using Microsoft.AspNetCore.Components.Web;
@@ -16,6 +15,7 @@ public class Program
 
         builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
         builder.Services.AddSingleton<IRepository, Repository>();
+        Common.Program.Init(builder.Services);
 
         await builder.Build().RunAsync();
     }

@@ -1,22 +1,70 @@
 using System.Text;
-using EurovisionApp.Common.Logic.Data;
+using BlazorPro.BlazorSize;
 using EurovisionApp.Common.Logic.Data.Models;
 using Microsoft.AspNetCore.Components;
 using Contest = EurovisionApp.Common.Logic.Data.Models.Eurovision.Contest;
 
 namespace EurovisionApp.Common.Pages;
 
-public partial class ContestDetails
+public partial class ContestDetails : IDisposable
 {
+    private const int MAX_WIDTH_PLACE_COLUMN_SMALL = 470; // px
+    private const int MAX_WIDTH_POINTS_COLUMN_SMALL = 500; // px
+    private const int MAX_WIDTH_RUNNING_COLUMN_SMALL = 550; // px
+
     [Parameter]
     public int Year { get; set; }
+    [Inject]
+    public IResizeListener ResizeListener { get; set; }
     private ContestData Contest { get; set; }
+    private bool HasPlaceColumnSmall { get; set; }
+    private bool HasPointsColumnSmall { get; set; }
+    private bool HasRunningColumnSmall { get; set; }
 
     protected override void OnParametersSet()
     {
         base.OnParametersSet();
 
         Contest = GetContestData(GetContest(Year));
+    }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        ResizeListener.OnResized += OnWindowResized;
+    }
+
+    public override void Dispose()
+    {
+        base.Dispose();
+
+        ResizeListener.OnResized -= OnWindowResized;
+    }
+
+    private void OnWindowResized(object _, BrowserWindowSize window)
+    {
+        int width = window.Width;
+        bool hasPlaceColumnSmall = false;
+        bool hasPointsColumnSmall = false;
+        bool hasRunningColumnSmall = false;
+
+        if (width < MAX_WIDTH_PLACE_COLUMN_SMALL) hasPlaceColumnSmall = true;
+        if (width < MAX_WIDTH_POINTS_COLUMN_SMALL) hasPointsColumnSmall = true;
+        if (width < MAX_WIDTH_RUNNING_COLUMN_SMALL) hasRunningColumnSmall = true;
+
+
+        bool hasChanges = HasPlaceColumnSmall != hasPlaceColumnSmall
+            || HasPointsColumnSmall != hasPointsColumnSmall
+            || HasRunningColumnSmall != hasRunningColumnSmall;
+
+        if (hasChanges)
+        {
+            HasPlaceColumnSmall = hasPlaceColumnSmall;
+            HasPointsColumnSmall = hasPointsColumnSmall;
+            HasRunningColumnSmall = hasRunningColumnSmall;
+            StateHasChanged();
+        }
     }
 
     private ContestData GetContestData(Contest contest)

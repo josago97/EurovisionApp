@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BlazorPro.BlazorSize" Version="6.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid" Version="0.1.0-alpha.22351.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.3" />
     <PackageReference Include="Sharplus" Version="1.3.1" />

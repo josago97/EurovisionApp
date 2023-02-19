@@ -4,9 +4,14 @@
 @inherits BaseEurovisionPage
 
 <div id="main">
+
     <div class="title">
-        <p>Eurovision @Contest.Year @Contestant.CountryName:</p>
-        <p>@Contestant.Artist - "@Contestant.Song"</p>
+        <EurovisionHeartFlag CountryCode="@Contestant.CountryCode"/>
+        <div>
+            <p>Eurovision @Contest.Year @Contestant.CountryName</p>
+            <p>@Contestant.Artist - "@Contestant.Song"</p>
+        </div>
+        <EurovisionHeartFlag CountryCode="@Contestant.CountryCode"/>
     </div>
 
     @if (Contestant.Videos.Count > 0)
@@ -17,10 +22,8 @@
 
     <div class="data-container">
         <div class="contest-data">
-            @if (Contestant.Bpm.HasValue)
-            {
-                <p><span class="data-entry">Bpm:</span> @Contestant.Bpm</p>
-            }
+            <p><span class="data-entry">Song:</span> @Contestant.Song</p>
+            <p><span class="data-entry">Artist:</span> @Contestant.Artist</p>
             @if (!string.IsNullOrEmpty(Contestant.Backings))
             {
                 <p><span class="data-entry">Backings:</span> @Contestant.Backings</p>
@@ -53,14 +56,19 @@
             {
                 <p><span class="data-entry">StageDirector:</span> @Contestant.StageDirector</p>
             }
-            @if (!string.IsNullOrEmpty(Contestant.Tone))
-            {
-                <p><span class="data-entry">Tone:</span> @Contestant.Tone</p>
-            }
             @if (!string.IsNullOrEmpty(Contestant.Writers))
             {
                 <p><span class="data-entry">Writers:</span> @Contestant.Writers</p>
             }
+            @if (Contestant.Bpm.HasValue)
+            {
+                <p><span class="data-entry">Beats per minute:</span> @Contestant.Bpm</p>
+            }
+            @if (!string.IsNullOrEmpty(Contestant.Tone))
+            {
+                <p><span class="data-entry">Tone:</span> @Contestant.Tone</p>
+            }
+            
         </div>
     </div>
 

@@ -60,7 +60,7 @@ public abstract class BaseEurovisionPage : ComponentBase, IDisposable
         return Contests[contestId];
     }
 
-    public void Dispose()
+    public virtual void Dispose()
     {
         NavigationManager.LocationChanged -= OnNavigationLocationChanged;
     }

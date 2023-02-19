@@ -1,0 +1,24 @@
+﻿.title {
+    display: flex;
+    flex-flow: row;
+    gap: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.title p {
+    margin: 0.5em 0;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+::deep .title img {
+    width: 6em;
+}
+
+@media (max-width: 600px) {
+    ::deep .title img {
+        display: none;
+    }
+}
