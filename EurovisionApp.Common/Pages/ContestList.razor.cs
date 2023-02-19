@@ -1,15 +1,10 @@
-using EurovisionApp.Common.Logic.Data;
-using Microsoft.AspNetCore.Components;
-
 namespace EurovisionApp.Common.Pages;
 
 public partial class ContestList
 {
-    [Inject]
-    public IRepository Repository { get; set; }
     private string Title { get; set; }
     private IEnumerable<ContestData> AllContests { get; set; }
-    private IEnumerable<ContestData> Contests { get; set; }
+    private new IEnumerable<ContestData> Contests { get; set; }
 
     protected override void OnParametersSet()
     {
@@ -19,16 +14,14 @@ public partial class ContestList
         {
             case PageType.Junior:
                 Title = "Junior Eurovision";
-                AllContests = GetContests(Repository.JuniorContests);
                 break;
 
             case PageType.Senior:
                 Title = "Eurovision";
-                AllContests = GetContests(Repository.SeniorContests);
                 break;
         }
 
-        Contests = AllContests;
+        Contests = AllContests = GetContests(base.Contests);
     }
 
     private IEnumerable<ContestData> GetContests(IReadOnlyList<Logic.Data.Models.Eurovision.Contest> contests)

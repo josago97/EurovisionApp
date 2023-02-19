@@ -13,7 +13,7 @@ public class Repository : BaseRepository
 
     protected override async Task<string> GetJsonDataAsync(string filename)
     {
-        using var scope = _serviceProvider.CreateScope();
+        using IServiceScope scope = _serviceProvider.CreateScope();
         HttpClient client = scope.ServiceProvider.GetRequiredService<HttpClient>();
         
         return await client.GetStringAsync(filename);

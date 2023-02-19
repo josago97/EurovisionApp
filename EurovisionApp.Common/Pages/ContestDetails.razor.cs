@@ -1,5 +1,3 @@
-using System.Globalization;
-using System.Reflection.Metadata;
 using System.Text;
 using EurovisionApp.Common.Logic.Data;
 using EurovisionApp.Common.Logic.Data.Models;
@@ -11,25 +9,17 @@ namespace EurovisionApp.Common.Pages;
 public partial class ContestDetails
 {
     [Parameter]
-    public int ContestId { get; set; }
-    [Inject]
-    public IRepository Repository { get; set; }
+    public int Year { get; set; }
     private ContestData Contest { get; set; }
 
     protected override void OnParametersSet()
     {
         base.OnParametersSet();
 
-        IReadOnlyList<Contest> contests = Page switch
-        {
-            PageType.Junior => Repository.JuniorContests,
-            _ => Repository.SeniorContests
-        };
-
-        Contest = GetContest(contests[ContestId]);
+        Contest = GetContestData(GetContest(Year));
     }
 
-    private ContestData GetContest(Contest contest)
+    private ContestData GetContestData(Contest contest)
     {
         ContestData result = new ContestData()
         {
@@ -40,7 +30,7 @@ public partial class ContestDetails
             LogoUrl = contest.LogoUrl,
             Participants = contest.Contestants.Count,
             Voting = contest.Voting,
-            Rounds = GetRounds(contest)
+            Rounds = GetRoundsData(contest)
         };
 
         StringBuilder dateBuilder = new StringBuilder();
@@ -73,7 +63,7 @@ public partial class ContestDetails
         return result;
     }
 
-    private IEnumerable<RoundData> GetRounds(Contest contest)
+    private IEnumerable<RoundData> GetRoundsData(Contest contest)
     {
         List<RoundData> result = new List<RoundData>();
 
@@ -81,15 +71,15 @@ public partial class ContestDetails
         {
             result.Add(new RoundData()
             {
-                Name = round.Name,
-                Contestants = GetContestants(contest, round.Performances)
+                Name = round.Name.ToTitleCase(),
+                Contestants = GetContestantsData(contest, round.Performances)
             });
         }
 
         return result;
     }
 
-    private ContestantData[] GetContestants(Contest contest, IEnumerable<Performance> performances)
+    private ContestantData[] GetContestantsData(Contest contest, IEnumerable<Performance> performances)
     {
         List<ContestantData> result = new List<ContestantData>();
 
@@ -99,6 +89,7 @@ public partial class ContestDetails
 
             result.Add(new ContestantData()
             {
+                Id = contestant.Id,
                 Place = performance.Place,
                 CountryCode = contestant.Country,
                 CountryName = Repository.Countries[contestant.Country],
@@ -137,6 +128,7 @@ public partial class ContestDetails
 
     private class ContestantData
     {
+        public int Id { get; set; }
         public int Place { get; set; }
         public string CountryCode { get; set; }
         public string CountryName { get; set; }

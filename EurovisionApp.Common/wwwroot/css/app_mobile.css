@@ -1,5 +1,9 @@
-﻿html, body {
-    font-size: 90%;
+﻿html {
+    font-size: clamp(60%, 2.5vw, 85%);
+}
+
+main {
+    margin: 0 10px 10px;
 }
 
 /*----------- Navbar -------------*/

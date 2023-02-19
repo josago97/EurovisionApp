@@ -23,7 +23,7 @@ public abstract class BaseRepository : IRepository
     {
         if (!_isInitialized)
         {
-            await Task.WhenAll(GetCountriesAsync(), GetContestsAsync2(), GetJuniorContestsAsync());
+            await Task.WhenAll(GetCountriesAsync(), GetSeniorContestsAsync(), GetJuniorContestsAsync());
             _isInitialized = true;
         }
         else
@@ -37,7 +37,7 @@ public abstract class BaseRepository : IRepository
         Countries = await GetAsync<Dictionary<string, string>>(COUNTRIES_FILENAME);
     }
 
-    private async Task GetContestsAsync2()
+    private async Task GetSeniorContestsAsync()
     {
         SeniorContests = await GetAsync<Contest[]>(CONTESTS_FILENAME);
     }

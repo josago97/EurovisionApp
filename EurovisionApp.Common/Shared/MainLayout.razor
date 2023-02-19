@@ -1,15 +1,16 @@
 ﻿@inherits LayoutComponentBase
 
 <NavMenu />
-
-@if (@Ready)
-{
-    <main>@Body</main>
-}
-else
-{
-    <h1>Loading...</h1>
-}
+<main>
+    @if (@Ready)
+    {
+        @Body
+    }
+    else
+    {
+        <h1>Loading...</h1>
+    }
+</main>
 
 <div class="page">
 

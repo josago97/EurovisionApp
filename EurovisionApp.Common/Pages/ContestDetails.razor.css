@@ -1,26 +1,106 @@
-﻿.title {
+﻿#main {
+    max-width: 800px;
+    margin: auto;
+
+    --data-color: #c8c7f2;
+}
+
+.title {
     font-size: 1.5rem;
     margin: 20px 0;
 }
 
 .data-container {
-    display: grid;
-    grid-template-columns: minmax(500px, auto) auto;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
     align-content: space-between;
 }
 
 .contest-data {
-    background-color: #c8c7f2;
+    background-color: var(--data-color);
     border-radius: 20px;
     padding: 10px;
+    width: 100%;
 }
 
 .data-entry {
     font-weight: bold;
 }
 
-.col-title-text {
-    font-size: 1.2em;
+.logo {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+
+.logo img {
+    min-width: 100px;
+    max-width: clamp(150px, 40vw, 250px);
+    min-height: 100px;
+    max-height: 300px;
+}
+.results {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+
+.results .title {
+    margin: 0.5em auto;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.results .subtitle {
+    margin: 0.5em auto;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/*========================== Result table ==========================*/
+
+::deep .quickgrid {
+    border-spacing: 0px;
+    --col-gap: 0;
+}
+
+::deep .quickgrid thead {
+    background-color: var(--data-color);
+}
+
+::deep .quickgrid th:not(:last-child) {
+  border-right: 2px solid white;
+}
+
+::deep .quickgrid .col-title {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1em;
+    justify-content: space-between;
+    padding: 0.2em 0.4em;
+}
+
+::deep .quickgrid tbody tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+::deep .quickgrid td {
+    padding: 5px 0.2em !important; 
+}
+
+a.link {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+
+.place {
     font-weight: bold;
 }
 
@@ -29,13 +109,23 @@
 }
 
 .artist {
-    font-size: 0.8em;
-}
-
-.place {
-    font-weight: bold;
+    margin-top: 2px;
+    font-size: 0.9em;
 }
 
 .flag {
     height: 1.25em;
+}
+
+/*===============================================================*/
+
+
+@media (max-width:600px) {
+    .data-container {
+        flex-direction: column;
+    }
+
+    ::deep .quickgrid{
+        --col-gap: 0;
+    }
 }
