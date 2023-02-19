@@ -22,75 +22,110 @@
     font-weight: bold;
     text-transform: uppercase;
 }
-/* _content/EurovisionApp.Common/Pages/BaseContestList.razor.rz.scp.css */
-.title[b-d0r2g9wqrb] {
-    margin-bottom: 20px;
-    font-family: Eurovision;
-    font-size: 5vw;
-    font-weight: bold;
-    text-align: center;
-}
-
-input[b-d0r2g9wqrb] {
-    padding: 10px 20px 10px 20px;
-    width: calc(100% - 40px);
-    font-size: 1.4rem;
-    border-radius: 100px;
-}
-
-.contest-list[b-d0r2g9wqrb] {
-    display: grid;
-    margin: 25px 0;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 25px;
-    justify-content: center;
-}
-
-.item-card[b-d0r2g9wqrb] {
-    text-align: center;
-    font-size: 1.5rem;
-    font-family: Gotham Book;
-}
-
-.item-card span[b-d0r2g9wqrb] {
-    font-weight: bold;
-}
-
-.item-card[b-d0r2g9wqrb] {
-    padding: 10px;
-    background: white;
-    box-shadow: 0px 0px 10px black;
-    border-radius: 25px;
-}
-
-.item-card:hover[b-d0r2g9wqrb] {
-    cursor: pointer;
-    box-shadow: 0 0 20px darkblue;
-}
 /* _content/EurovisionApp.Common/Pages/ContestDetails.razor.rz.scp.css */
+#main[b-wxfmknxex4] {
+    max-width: 800px;
+    margin: auto;
+
+    --data-color: #c8c7f2;
+}
+
 .title[b-wxfmknxex4] {
     font-size: 1.5rem;
     margin: 20px 0;
 }
 
 .data-container[b-wxfmknxex4] {
-    display: grid;
-    grid-template-columns: minmax(500px, auto) auto;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
     align-content: space-between;
 }
 
 .contest-data[b-wxfmknxex4] {
-    background-color: #c8c7f2;
+    background-color: var(--data-color);
     border-radius: 20px;
     padding: 10px;
+    width: 100%;
 }
 
 .data-entry[b-wxfmknxex4] {
     font-weight: bold;
 }
 
-.col-title-text[b-wxfmknxex4] {
-    font-size: 1.2em;
+.logo[b-wxfmknxex4] {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+
+.logo img[b-wxfmknxex4] {
+    min-width: 100px;
+    max-width: clamp(150px, 40vw, 250px);
+    min-height: 100px;
+    max-height: 300px;
+}
+.results[b-wxfmknxex4] {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+
+.results .title[b-wxfmknxex4] {
+    margin: 0.5em auto;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.results .subtitle[b-wxfmknxex4] {
+    margin: 0.5em auto;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/*========================== Result table ==========================*/
+
+[b-wxfmknxex4] .quickgrid {
+    border-spacing: 0px;
+    --col-gap: 0;
+}
+
+[b-wxfmknxex4] .quickgrid thead {
+    background-color: var(--data-color);
+}
+
+[b-wxfmknxex4] .quickgrid th:not(:last-child) {
+  border-right: 2px solid white;
+}
+
+[b-wxfmknxex4] .quickgrid .col-title {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1em;
+    justify-content: space-between;
+    padding: 0.2em 0.4em;
+}
+
+[b-wxfmknxex4] .quickgrid tbody tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+[b-wxfmknxex4] .quickgrid td {
+    padding: 5px 0.2em !important; 
+}
+
+a.link[b-wxfmknxex4] {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+
+.place[b-wxfmknxex4] {
     font-weight: bold;
 }
 
@@ -99,15 +134,25 @@ input[b-d0r2g9wqrb] {
 }
 
 .artist[b-wxfmknxex4] {
-    font-size: 0.8em;
-}
-
-.place[b-wxfmknxex4] {
-    font-weight: bold;
+    margin-top: 2px;
+    font-size: 0.9em;
 }
 
 .flag[b-wxfmknxex4] {
     height: 1.25em;
+}
+
+/*===============================================================*/
+
+
+@media (max-width:600px) {
+    .data-container[b-wxfmknxex4] {
+        flex-direction: column;
+    }
+
+    [b-wxfmknxex4] .quickgrid{
+        --col-gap: 0;
+    }
 }
 /* _content/EurovisionApp.Common/Pages/ContestList.razor.rz.scp.css */
 .title[b-8jkh0kaqiz] {
@@ -146,45 +191,17 @@ input[b-8jkh0kaqiz] {
     cursor: pointer;
     box-shadow: 0 0 20px darkblue;
 }
-/* _content/EurovisionApp.Common/Pages/SeniorContestList.razor.rz.scp.css */
-input[b-hjlmdtvgkq] {
-    width: 100%;
-    font-size: 1.5rem;
-    border-radius: 10px;
-    padding: 0 10px 0 10px;
-}
-
-.contest-list[b-hjlmdtvgkq] {
-    margin: 25px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 25px;
-    justify-content: center;
-}
-
-.item-card[b-hjlmdtvgkq] {
-    text-align: center;
-    font-size: 1.5rem;
-    font-family: Gotham Book;
-}
-
-.item-card span[b-hjlmdtvgkq] {
-    font-weight: bold;
-}
 /* _content/EurovisionApp.Common/Shared/MainLayout.razor.rz.scp.css */
-main[b-emskss0lbm] {
-    margin: 0 20px;
-}
 /* _content/EurovisionApp.Common/Shared/NavMenu.razor.rz.scp.css */
 .navbar[b-mv5irjltva] {
-    --header-size: 75px;
+    --header-size: 70px;
 
     display: grid;
     grid-template-columns: auto;
     background-color: darkblue;
     color: white;
     font-family: Eurovision;
-    font-size: 2.5em;
+    font-size: 2em;
 }
 
 .navbar *[b-mv5irjltva] {
@@ -201,24 +218,25 @@ main[b-emskss0lbm] {
 
 .title[b-mv5irjltva] {
     padding: 5px 0px;
-    display: inline-block;
+    display: flex;
     height: 100%;
 }
 
 .title img[b-mv5irjltva] {
-    height: 100%;
+    margin: auto;
+    min-height: calc(var(--header-size) * 0.6);
+    height: 1.75em;
 }
 
 /*=================== Navbar Toggler ==================*/
 
 .navbar-toggler[b-mv5irjltva] {
-    margin: 10px;
-    padding: 10px;
+    margin: 15px;
+    padding: 2px 10px;
     line-height: 1;
     background-color: rgba(255, 255, 255, 0.25);
     border: 2px solid white;
     border-radius: 0.2em;
-    transition: box-shadow .15s;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -226,12 +244,12 @@ main[b-emskss0lbm] {
 
 /*========== Burguer Button =========*/
 
-.icon-burguer[b-mv5irjltva] {
+#icon-burguer[b-mv5irjltva] {
     --icon-height: calc(var(--header-size) - 50px);
 
     position: relative;
     margin: auto;
-    width: calc(var(--icon-height) * 1.5);
+    width: calc(var(--icon-height) * 1.1);
     height: var(--icon-height);
     display: flex;
     justify-content: space-between;
@@ -239,13 +257,13 @@ main[b-emskss0lbm] {
     cursor: pointer;
 }
 
-.icon-burguer > div[b-mv5irjltva] {
-    --line-height: 3px;
+#icon-burguer > div[b-mv5irjltva] {
+    --line-height: 2px;
 
     position: relative;
     height: var(--line-height);
     background-color: #fff;
-    transition: 0.5s;
+    transition: 0.25s;
     border-radius: var(--line-height);
 }
 
@@ -255,19 +273,19 @@ main[b-emskss0lbm] {
     display: none;
 }
 
-#navbar-toggler-input:checked ~ .icon-burguer > div[b-mv5irjltva] {
+#navbar-toggler-input:checked ~ #icon-burguer > div[b-mv5irjltva] {
     --offset: calc(calc(var(--icon-height) - var(--line-height)) / 2);
 }
 
-#navbar-toggler-input:checked ~ .icon-burguer > div:nth-child(1)[b-mv5irjltva] {
+#navbar-toggler-input:checked ~ #icon-burguer > div:nth-child(1)[b-mv5irjltva] {
     transform: translateY(var(--offset)) rotate(45deg);
 }
 
-#navbar-toggler-input:checked ~ .icon-burguer > div:nth-child(2)[b-mv5irjltva] {
+#navbar-toggler-input:checked ~ #icon-burguer > div:nth-child(2)[b-mv5irjltva] {
     opacity: 0;
 }
 
-#navbar-toggler-input:checked ~ .icon-burguer > div:nth-child(3)[b-mv5irjltva] {
+#navbar-toggler-input:checked ~ #icon-burguer > div:nth-child(3)[b-mv5irjltva] {
     transform: translateY(calc(var(--offset) / -1)) rotate(-45deg);
 }
 
@@ -306,7 +324,7 @@ main[b-emskss0lbm] {
     display: none;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 500px) {
     .navbar[b-mv5irjltva] {
         display: grid;
         grid-template-columns: 1fr auto auto;
@@ -326,7 +344,7 @@ main[b-emskss0lbm] {
     }
 
     .link[b-mv5irjltva] {
-        --border-size: 1.5em;
+        --border-size: 40px;
 
         position: relative;
     }
