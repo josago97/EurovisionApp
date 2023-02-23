@@ -53,7 +53,6 @@ public partial class ContestDetails : IDisposable
         if (width < MAX_WIDTH_POINTS_COLUMN_SMALL) hasPointsColumnSmall = true;
         if (width < MAX_WIDTH_RUNNING_COLUMN_SMALL) hasRunningColumnSmall = true;
 
-
         bool hasChanges = HasPlaceColumnSmall != hasPlaceColumnSmall
             || HasPointsColumnSmall != hasPointsColumnSmall
             || HasRunningColumnSmall != hasRunningColumnSmall;

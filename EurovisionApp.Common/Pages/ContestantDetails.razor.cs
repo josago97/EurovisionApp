@@ -1,5 +1,4 @@
 using EurovisionApp.Common.Logic.Data.Models;
-using EurovisionApp.Common.Logic.Data.Models.Eurovision;
 using Microsoft.AspNetCore.Components;
 using Contest = EurovisionApp.Common.Logic.Data.Models.Eurovision.Contest;
 using Contestant = EurovisionApp.Common.Logic.Data.Models.Eurovision.Contestant;
@@ -14,6 +13,7 @@ public partial class ContestantDetails
     public int ContestantId { get; set; }
     private ContestData Contest { get; set; }
     private ContestantData Contestant { get; set; }
+    private int LyricsSelectedIndex { get; set; }
 
     protected override void OnParametersSet()
     {
@@ -53,9 +53,6 @@ public partial class ContestantDetails
             StageDirector = contestant.StageDirector,
             Tone = contestant.Tone,
             Videos = contestant.VideoUrls,
-            
-
-            
         };
 
         if (!contestant.Backings.IsNullOrEmpty())

@@ -42,7 +42,7 @@
                     SortBy="GridSort<ContestantData>.ByAscending(c => c.Place)" 
                     IsDefaultSort="SortDirection.Ascending"
                     Align="Align.Center">
-                    <a class="link" href=@($"{Path}/{@context.Id}")>
+                    <a class="link" href=@($"{BasePath}/{@context.Id}")>
                         <div class="place">@context.Place</div>
                     </a>
                 </TemplateColumn>
@@ -50,7 +50,7 @@
                     SortBy="GridSort<ContestantData>.ByAscending(c => c.CountryName)" 
                     IsDefaultSort="SortDirection.Ascending"
                     Align="Align.Center">
-                    <a class="link" href=@($"{Path}/{@context.Id}")>
+                    <a class="link" href=@($"{BasePath}/{@context.Id}")>
                         <div>
                             <img class="flag" src="@Utils.GetStaticFileUrl($"/images/flags/{context.CountryCode.ToLower()}.svg")" />
                             <div>@context.CountryName</div>
@@ -61,7 +61,7 @@
                     SortBy="GridSort<ContestantData>.ByAscending(c => c.Song)
                         .ThenAscending(c => c.Artist)" 
                     IsDefaultSort="SortDirection.Ascending">
-                    <a class="link" href=@($"{Path}/{@context.Id}")>
+                    <a class="link" href=@($"{BasePath}/{@context.Id}")>
                         <div class="song">@context.Song</div>
                         <div class="artist">@context.Artist</div>
                     </a>
@@ -70,7 +70,7 @@
                     SortBy="GridSort<ContestantData>.ByAscending(c => c.Points)" 
                     IsDefaultSort="SortDirection.Ascending"
                     Align="Align.Center">
-                    <a class="link" href=@($"{Path}/{@context.Id}")>
+                    <a class="link" href=@($"{BasePath}/{@context.Id}")>
                         @context.Points
                     </a>
                 </TemplateColumn>
@@ -78,7 +78,7 @@
                     SortBy="GridSort<ContestantData>.ByAscending(c => c.Running)" 
                     IsDefaultSort="SortDirection.Ascending"
                     Align="Align.Center">
-                    <a class="link" href=@($"{Path}/{@context.Id}")>
+                    <a class="link" href=@($"{BasePath}/{@context.Id}")>
                         @context.Running
                     </a>
                 </TemplateColumn>

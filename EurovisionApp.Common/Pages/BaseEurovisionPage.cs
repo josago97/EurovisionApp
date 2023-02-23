@@ -18,39 +18,66 @@ public abstract class BaseEurovisionPage : ComponentBase, IDisposable
     [Inject]
     public IRepository Repository { get; set; }
 
-    protected string Path { get; set; }
-    protected PageType Page { get; set; }
-    protected IReadOnlyList<Contest> Contests { get; set; }
+    protected string BasePath { get; private set; }
+    protected PageType Page { get; private set; }
+    protected IReadOnlyList<Contest> Contests { get; private set; }
+    private string PagePath { get; set; }
 
     protected override void OnInitialized()
     {
-        NavigationManager.LocationChanged += OnNavigationLocationChanged;
+        NavigationManager.LocationChanged += OnLocationChanged;
     }
 
-    private void OnNavigationLocationChanged(object sender, LocationChangedEventArgs e)
+    private void OnLocationChanged(object sender, LocationChangedEventArgs e)
     {
-        OnParametersSet();
-        StateHasChanged();
+        string pagePath = GetPagePath(GetBasePath());
+
+        if (PagePath != pagePath)
+        {
+            OnParametersSet();
+            StateHasChanged();
+        }
     }
 
     protected override void OnParametersSet()
     {
-        string relativePath = Path = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
-        int slashIndex = relativePath.IndexOf('/');
-        if (slashIndex > 0) relativePath = relativePath.Substring(0, slashIndex);
+        base.OnParametersSet();
 
-        switch (relativePath)
+        string basePath = GetBasePath();
+        string pagePath = GetPagePath(basePath);
+
+        if (PagePath != pagePath)
         {
-            case "junior":
-                Page = PageType.Junior;
-                Contests = Repository.JuniorContests;
-                break;
+            BasePath = basePath;
+            PagePath = pagePath;
 
-            default:
-                Page = PageType.Senior;
-                Contests = Repository.SeniorContests;
-                break;
+            switch (pagePath)
+            {
+                case "junior":
+                    Page = PageType.Junior;
+                    Contests = Repository.JuniorContests;
+                    break;
+
+                default:
+                    Page = PageType.Senior;
+                    Contests = Repository.SeniorContests;
+                    break;
+            }
         }
+    }
+
+    private string GetBasePath()
+    {
+        return NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+    }
+
+    private string GetPagePath(string basePath)
+    {
+        string result = basePath;
+        int slashIndex = result.IndexOf('/');
+        if (slashIndex > 0) result = result.Substring(0, slashIndex);
+
+        return result;
     }
 
     protected Contest GetContest(int year)
@@ -62,6 +89,6 @@ public abstract class BaseEurovisionPage : ComponentBase, IDisposable
 
     public virtual void Dispose()
     {
-        NavigationManager.LocationChanged -= OnNavigationLocationChanged;
+        NavigationManager.LocationChanged -= OnLocationChanged;
     }
 }

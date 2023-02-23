@@ -4,7 +4,7 @@ namespace EurovisionApp.Common.Logic.Data;
 
 public interface IRepository
 {
-    Dictionary<string, string> Countries { get; }
+    IDictionary<string, string> Countries { get; }
     IReadOnlyList<Contest> SeniorContests { get; }
     IReadOnlyList<Contest> JuniorContests { get; }
 

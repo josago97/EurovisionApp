@@ -1,5 +1,6 @@
-﻿using System.Text.Json;
-using EurovisionApp.Common.Logic.Data.Models.Eurovision;
+﻿using EurovisionApp.Common.Logic.Data.Models.Eurovision;
+using SpanJson;
+using SpanJson.Resolvers;
 
 namespace EurovisionApp.Common.Logic.Data;
 
@@ -10,12 +11,8 @@ public abstract class BaseRepository : IRepository
     protected const string JUNIOR_CONTESTS_FILENAME = "junior.json";
 
     private bool _isInitialized = false;
-    private JsonSerializerOptions _jsonOptions = new JsonSerializerOptions()
-    {
-        PropertyNameCaseInsensitive = true
-    };
 
-    public Dictionary<string, string> Countries { get; private set; }
+    public IDictionary<string, string> Countries { get; private set; }
     public IReadOnlyList<Contest> SeniorContests { get; private set; }
     public IReadOnlyList<Contest> JuniorContests { get; private set; }
 
@@ -51,7 +48,7 @@ public abstract class BaseRepository : IRepository
     {
         string json = await GetJsonDataAsync(Utils.GetStaticFileUrl("data/" + filename));
 
-        return JsonSerializer.Deserialize<T>(json, _jsonOptions);
+        return JsonSerializer.Generic.Utf16.Deserialize<T, IncludeNullsCamelCaseResolver<char>>(json);
     }
 
     protected abstract Task<string> GetJsonDataAsync(string filename);

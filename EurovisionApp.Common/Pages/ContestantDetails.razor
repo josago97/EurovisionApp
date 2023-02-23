@@ -74,18 +74,27 @@
 
     @if (!Contestant.Lyrics.IsNullOrEmpty())
     {
-        <!--<InputSelect>
-            @foreach (var lyrics in Contestant.Lyrics)
+        <div>Lyrics</div>
+
+        <InputSelect @bind-Value="LyricsSelectedIndex">
+            @for (int i = 0; i < Contestant.Lyrics.Count; i++)
             {
-                <option value="@lyrics.Languages[0]">@lyrics.Languages[0]</option>
+                var lyrics = Contestant.Lyrics[i];
+                <option value="@i">@lyrics.Languages[0]</option>
             }
-        </InputSelect>-->
-    }
+        </InputSelect>
 
-        @foreach (var lyrics in Contestant.Lyrics)
+        <p>@Contestant.Song</p>
+
+        @foreach (string paragraph in Contestant.Lyrics[LyricsSelectedIndex].Content.Split('\r'))
         {
-            <p>@lyrics.Content</p>
+            <p>
+                @foreach (string line in paragraph.Split('\n')){
+                    @line
+                    <br />
+                }
+            </p>
         }
-
+    }
 
 </div>
