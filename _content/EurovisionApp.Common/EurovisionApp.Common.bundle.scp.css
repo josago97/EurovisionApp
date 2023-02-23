@@ -115,6 +115,7 @@
 /*========================== Result table ==========================*/
 
 [b-wxfmknxex4] .quickgrid {
+    width: 100%;
     border-spacing: 0px;
     --col-gap: 0;
 }
