@@ -1,3 +1,14 @@
+/* _content/EurovisionApp.Common/Components/ArmorMusicSheet.razor.rz.scp.css */
+.note[b-l5lnnssp2b]
+{
+    font-size: 20px;
+    font-family: Polihymnia;
+}
+
+svg[b-l5lnnssp2b] {
+    display: block;
+    width: 200px;
+}
 /* _content/EurovisionApp.Common/Components/EurovisionTitle.razor.rz.scp.css */
 .eurovision-title[b-3kmq0eo424] {
     text-align: center;
@@ -47,14 +58,44 @@
         display: none;
     }
 }
-/* _content/EurovisionApp.Common/Pages/ContestDetails.razor.rz.scp.css */
-#main[b-wxfmknxex4] {
-    max-width: 800px;
-    margin: auto;
 
-    --data-color: #c8c7f2;
+.yt-video[b-jb8rm7pqpp] {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9, for an aspect ratio of 1:1 change to this value to 100% */ 
 }
 
+.yt-video iframe[b-jb8rm7pqpp] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.lyrics-header[b-jb8rm7pqpp] {
+    background-color: var(--data-box-color);
+    padding: 0.5em;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.lyrics-title[b-jb8rm7pqpp] {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.lyrics-content[b-jb8rm7pqpp] {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 2.5em;
+}
+
+.lyrics-content p[b-jb8rm7pqpp] {
+    margin: 0 0 1em 0;
+}
+/* _content/EurovisionApp.Common/Pages/ContestDetails.razor.rz.scp.css */
 .title[b-wxfmknxex4] {
     font-size: 1.5rem;
     margin: 20px 0;
@@ -68,13 +109,14 @@
 }
 
 .contest-data[b-wxfmknxex4] {
-    background-color: var(--data-color);
+    background-color: var(--data-box-color);
     border-radius: 20px;
     padding: 10px;
     width: 100%;
 }
 
-.data-entry[b-wxfmknxex4] {
+.mensage-cancelation[b-wxfmknxex4] {
+    margin: auto;
     font-weight: bold;
 }
 
@@ -121,7 +163,7 @@
 }
 
 [b-wxfmknxex4] .quickgrid thead {
-    background-color: var(--data-color);
+    background-color: var(--data-box-color);
 }
 
 [b-wxfmknxex4] .quickgrid th:not(:last-child) {
@@ -181,6 +223,10 @@ a.link[b-wxfmknxex4] {
     }
 }
 /* _content/EurovisionApp.Common/Pages/ContestList.razor.rz.scp.css */
+main[b-8jkh0kaqiz] {
+    max-width: 1200px;
+}
+
 .title[b-8jkh0kaqiz] {
     margin: 20px 0;
     font-family: Eurovision;

@@ -81,7 +81,7 @@
       "url": "_framework\/dotnet.timezones.blat"
     },
     {
-      "hash": "sha256-lZc1DvdIz50ZeJZVQ2teoR4CFd\/ASog2drsncVUtqSs=",
+      "hash": "sha256-9GbHrlag34RewSQQcuFpUb94FQ0iJW9GE\/7KWCM2g1I=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -89,15 +89,15 @@
       "url": "_framework\/BlazorPro.BlazorSize.dll"
     },
     {
-      "hash": "sha256-4g7UJ6Xp\/IrNI3tEeFIEklqz41qMniwJ9B4PZIfC5Nw=",
+      "hash": "sha256-TNHjFq0UKS4ApcgEZGkQTikoKtNbjbGMUG6jL94IRLw=",
       "url": "_framework\/EurovisionApp.Common.dll"
     },
     {
-      "hash": "sha256-jCoyS2pIM5TUHreSGJKPaaQ3KA3GSQLCYZhgxez4Nzw=",
+      "hash": "sha256-rmAf2kSdIPia22\/EGh\/B5tIZOdA6xHZ707C\/zntodSQ=",
       "url": "_framework\/EurovisionApp.Wasm.dll"
     },
     {
-      "hash": "sha256-WKQ7F4tuBENPsvd9e8xtosu\/\/6XcGBZP+ICeXMFLD3s=",
+      "hash": "sha256-l6igX9wRHpRD\/X11TzhBpZTZNCH8liu3359royc4uow=",
       "url": "_framework\/Microsoft.AspNetCore.Components.dll"
     },
     {
@@ -237,7 +237,7 @@
       "url": "_framework\/System.ObjectModel.dll"
     },
     {
-      "hash": "sha256-kGCZkdBg47HCeHBR\/vm1mu+ZTHr5Q3bGkjRAEN\/InAE=",
+      "hash": "sha256-8vu3SfIuT\/RcSw+7jRzl1Z+6vLrNNSfEO092pzAqq3I=",
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
@@ -245,7 +245,7 @@
       "url": "_framework\/System.Private.Uri.dll"
     },
     {
-      "hash": "sha256-EKohzz2CljM+2hjMeZY0GZi7HDvjrpYfrFmORnz6xDw=",
+      "hash": "sha256-qpqXUa\/Z266rJOxuRpJBg0w0N4uqii3UasLmnMx5AYM=",
       "url": "_framework\/System.Runtime.dll"
     },
     {
@@ -281,7 +281,7 @@
       "url": "_framework\/dotnet.7.0.3.qkfmj81bw1.js"
     },
     {
-      "hash": "sha256-PhIs+XfxGuF\/pvaffdC8nq4HKohk8kda4A1kiMLv0xI=",
+      "hash": "sha256-EHOVbUhrWGrL56aK8OayBI3Hg3B9VHa\/j6rgYc15bDk=",
       "url": "_framework\/dotnet.wasm"
     },
     {
@@ -309,7 +309,7 @@
       "url": "_content\/EurovisionApp.Common\/css\/app_desktop.css"
     },
     {
-      "hash": "sha256-93d7VLH5We+aH0GdpDz2XcmlMWzr8PxRhGEN\/ePC4o4=",
+      "hash": "sha256-n0l3f++eNvAaq1rqtNqA+MlkmalykiM+VGLOsOdT45g=",
       "url": "_content\/EurovisionApp.Common\/css\/app_mobile.css"
     },
     {
@@ -317,7 +317,7 @@
       "url": "_content\/EurovisionApp.Common\/css\/app_tablet.css"
     },
     {
-      "hash": "sha256-tjl5bDcRf1yX2m3j6tEnCyNFIwBBl\/pFtLKmDSWId90=",
+      "hash": "sha256-37JLiln4hxz3b52jiOhKBB5wEId0Zkr\/+zTTFhJjo5Q=",
       "url": "_content\/EurovisionApp.Common\/css\/app.css"
     },
     {
@@ -343,6 +343,10 @@
     {
       "hash": "sha256-dCNZ1HUTGnX\/BXIkFRx7OE7wuJVWIScJpeNKlAmYOHY=",
       "url": "_content\/EurovisionApp.Common\/fonts\/GothamBook.ttf"
+    },
+    {
+      "hash": "sha256-CT3EwPJrpiwchjkeKvMqGToHI5UDFj\/R0HJqzrOWE4I=",
+      "url": "_content\/EurovisionApp.Common\/fonts\/Polihymnia.ttf"
     },
     {
       "hash": "sha256-3kmvQf\/2MleGdTitv4vEbpDWNQuztwjq6VS8ELZ12IA=",
@@ -793,9 +797,9 @@
       "url": "_content\/Microsoft.AspNetCore.Components.QuickGrid\/Microsoft.AspNetCore.Components.QuickGrid.bundle.scp.css"
     },
     {
-      "hash": "sha256-fKRtfNRJIUy7VRIsXr928HoC3nRy6HoZX5spzy1Aox0=",
+      "hash": "sha256-c+377MSwZD1ekQjWrxhcM0+gZ5Vi+MnQ19kGgeGx6Rw=",
       "url": "_content\/EurovisionApp.Common\/EurovisionApp.Common.bundle.scp.css"
     }
   ],
-  "version": "FRlgEgNb"
+  "version": "rtQs5GGT"
 };

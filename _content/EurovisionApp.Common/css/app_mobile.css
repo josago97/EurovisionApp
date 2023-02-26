@@ -2,7 +2,7 @@
     font-size: clamp(60%, 3vw, 85%);
 }
 
-main {
+#main {
     margin: 10px;
 }
 

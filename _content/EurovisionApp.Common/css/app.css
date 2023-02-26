@@ -1,4 +1,8 @@
-﻿html, body {
+﻿:root {
+    --data-box-color: #C8C7F2AA;
+}
+
+html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -11,12 +15,13 @@ body {
     box-sizing: border-box;
 }
 
-main {
+#main {
     margin: 20px;
 }
 
-main > * {
-    margin: 0 auto;
+main {
+    margin: auto;
+    max-width: 800px;
 }
 
 a.link {
@@ -25,7 +30,15 @@ a.link {
 }
 
 
+.contest-data {
+    background-color: var(--data-box-color);
+    border-radius: 20px;
+    padding: 10px;
+}
 
+.data-entry {
+    font-weight: bold;
+}
 
 /*----------- Podium -------------*/
 
@@ -52,4 +65,9 @@ a.link {
 @font-face {
     font-family: 'Gotham Book';
     src: url('../fonts/GothamBook.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Polihymnia';
+    src: url('../fonts/Polihymnia.ttf') format('truetype');
 }
