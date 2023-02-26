@@ -1,4 +1,8 @@
-﻿.title {
+﻿main {
+    max-width: 1200px;
+}
+
+.title {
     margin: 20px 0;
     font-family: Eurovision;
     font-size: 4rem;

@@ -1,11 +1,4 @@
-﻿#main {
-    max-width: 800px;
-    margin: auto;
-
-    --data-color: #c8c7f2;
-}
-
-.title {
+﻿.title {
     font-size: 1.5rem;
     margin: 20px 0;
 }
@@ -18,13 +11,14 @@
 }
 
 .contest-data {
-    background-color: var(--data-color);
+    background-color: var(--data-box-color);
     border-radius: 20px;
     padding: 10px;
     width: 100%;
 }
 
-.data-entry {
+.mensage-cancelation {
+    margin: auto;
     font-weight: bold;
 }
 
@@ -71,7 +65,7 @@
 }
 
 ::deep .quickgrid thead {
-    background-color: var(--data-color);
+    background-color: var(--data-box-color);
 }
 
 ::deep .quickgrid th:not(:last-child) {

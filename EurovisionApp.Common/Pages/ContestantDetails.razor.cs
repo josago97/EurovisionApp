@@ -1,3 +1,4 @@
+using EurovisionApp.Common.Components;
 using EurovisionApp.Common.Logic.Data.Models;
 using Microsoft.AspNetCore.Components;
 using Contest = EurovisionApp.Common.Logic.Data.Models.Eurovision.Contest;
@@ -110,6 +111,69 @@ public partial class ContestantDetails
 
         return result.ToArray();
     }
+    private RenderFragment CreateArmorMusicSheet() => builder =>
+    {
+        string[] toneAndScaleName = Contestant.Tone.Split();
+        string toneName = toneAndScaleName[0].Replace("b", "Flat").Replace("#", "Sharp");
+        ArmorMusicSheet.Notes tone = Enum.Parse<ArmorMusicSheet.Notes>(toneName, true);
+        ArmorMusicSheet.Scales scale = toneAndScaleName[1].Equals("minor", StringComparison.OrdinalIgnoreCase) ?
+            ArmorMusicSheet.Scales.Minor : ArmorMusicSheet.Scales.Major;
+
+        builder.OpenComponent(0, typeof(ArmorMusicSheet));
+        builder.AddAttribute(1, nameof(ArmorMusicSheet.Tempo), Contestant.Bpm);
+        builder.AddAttribute(2, nameof(ArmorMusicSheet.Tone), tone);
+        builder.AddAttribute(3, nameof(ArmorMusicSheet.Scale), scale);
+        builder.CloseComponent();
+    };
+
+    // Columns / Paragraph / Line
+    private string[][][] GetLyricsColumns()
+    {
+        string qa = Contestant.Lyrics[LyricsSelectedIndex].Content;
+        string[] w = qa.Split('\r');
+        string[][][] result = new string[2][][];
+        string[][] paragraphs = Contestant.Lyrics[LyricsSelectedIndex].Content
+            .Split('\r')
+            .Select(p => p.Split("\n").Where(l => !string.IsNullOrEmpty(l)).ToArray())
+            .Where(p => p.Length > 0)
+            .ToArray();
+        int totalLines = paragraphs.Sum(p => p.Length + 1); // Lines break (+1)
+        int middleLines = (int)Math.Ceiling(totalLines / 2.0);
+        int middle = 0;
+
+        while (middleLines > 0)
+        {
+            int lines = paragraphs[middle].Length + 1; // Line break (+1)
+
+            // Si lo que me queda es menor que la mitad del párrafo,
+            // entonces lo añado mejor a la otra mitad, ya que está
+            // más cerca de la segunda mitad que de la primera
+            if (middleLines < lines / 2)
+                middleLines = 0;
+            else
+            {
+                middleLines -= lines;
+                middle++;
+            }
+        }
+
+        List<string[]> columnParagraphs = new List<string[]>();
+        int start, end;
+
+        for (int i = 0; i < result.Length; i++)
+        {
+            start = i == 0 ? 0 : middle;
+            end = i == 0 ? middle : paragraphs.Length;
+
+            for (int j = start; j < end; j++)
+                columnParagraphs.Add(paragraphs[j]);
+
+            result[i] = columnParagraphs.ToArray();
+            columnParagraphs.Clear();
+        }
+
+        return result;
+    }
 
     private class ContestData
     {
@@ -138,6 +202,9 @@ public partial class ContestantDetails
         public string CountryName { get; set; }
         public string Dancers { get; set; }
         public IReadOnlyList<Lyrics> Lyrics { get; set; }
+        public int? Place { get; set; }
+        public int? Points { get; set; }
+        public int? Running { get; set; }
         public string Song { get; set; }
         public string Spokesperson { get; set; }
         public string StageDirector { get; set; }

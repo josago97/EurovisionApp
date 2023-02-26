@@ -3,7 +3,7 @@
 @using Microsoft.AspNetCore.Components.QuickGrid
 @inherits BaseEurovisionPage
 
-<div id="main">
+<main>
     <div class="title">
         <EurovisionTitle Country="@Contest.Country" 
             City="@Contest.City" 
@@ -19,6 +19,12 @@
             @if (!string.IsNullOrEmpty(Contest.Presenters)) { <p><span class="data-entry">Presenters:</span> @Contest.Presenters</p> }
             <p><span class="data-entry">Participants:</span> @Contest.Participants</p>
             @if (!string.IsNullOrEmpty(Contest.Voting)) { <p><span class="data-entry">Voting:</span> @Contest.Voting</p> }
+
+            @if (IsCancelled)
+            {
+                <p class="mensage-cancelation">@CancelationMessage</p>
+            }
+
         </div>
 
         @if (!string.IsNullOrEmpty(Contest.LogoUrl))
@@ -27,25 +33,30 @@
                 <img src="@Contest.LogoUrl" alt="logo"/>
             </div>
         }
-
     </div>
 
     <div class="results">
-        <div class="title">Results</div>
+        <div class="title">@(IsCancelled ? "Results" : "Participants")</div>
 
         @foreach (var round in Contest.Rounds)
         {
-            <div class="subtitle">@round.Name</div>
+            @if (!IsCancelled)
+            {
+                <div class="subtitle">@round.Name</div>
+            }
 
             <QuickGrid Items="@round.Contestants.AsQueryable()">
-                <TemplateColumn Title=@(HasPlaceColumnSmall ? "#" : "Place")
-                    SortBy="GridSort<ContestantData>.ByAscending(c => c.Place)" 
-                    IsDefaultSort="SortDirection.Ascending"
-                    Align="Align.Center">
-                    <a class="link" href=@($"{BasePath}/{@context.Id}")>
-                        <div class="place">@context.Place</div>
-                    </a>
-                </TemplateColumn>
+                @if (round.Contestants.Any(c => c.Place.HasValue))
+                {
+                    <TemplateColumn Title=@(HasPlaceColumnSmall ? "#" : "Place")
+                        SortBy="GridSort<ContestantData>.ByAscending(c => c.Place)" 
+                        IsDefaultSort="SortDirection.Ascending"
+                        Align="Align.Center">
+                        <a class="link" href=@($"{BasePath}/{@context.Id}")>
+                            <div class="place">@context.Place</div>
+                        </a>
+                    </TemplateColumn>
+                }
                 <TemplateColumn Title="Country"
                     SortBy="GridSort<ContestantData>.ByAscending(c => c.CountryName)" 
                     IsDefaultSort="SortDirection.Ascending"
@@ -66,24 +77,30 @@
                         <div class="artist">@context.Artist</div>
                     </a>
                 </TemplateColumn>
-                <TemplateColumn Title=@(HasPointsColumnSmall ? "Pts" : "Points")
-                    SortBy="GridSort<ContestantData>.ByAscending(c => c.Points)" 
-                    IsDefaultSort="SortDirection.Ascending"
-                    Align="Align.Center">
-                    <a class="link" href=@($"{BasePath}/{@context.Id}")>
-                        @context.Points
-                    </a>
-                </TemplateColumn>
-                <TemplateColumn Title=@(HasRunningColumnSmall ? "Run" : "Running")
-                    SortBy="GridSort<ContestantData>.ByAscending(c => c.Running)" 
-                    IsDefaultSort="SortDirection.Ascending"
-                    Align="Align.Center">
-                    <a class="link" href=@($"{BasePath}/{@context.Id}")>
-                        @context.Running
-                    </a>
-                </TemplateColumn>
+                @if (round.Contestants.Any(c => c.Points.HasValue))
+                {
+                    <TemplateColumn Title=@(HasPointsColumnSmall ? "Pts" : "Points")
+                        SortBy="GridSort<ContestantData>.ByAscending(c => c.Points)" 
+                        IsDefaultSort="SortDirection.Ascending"
+                        Align="Align.Center">
+                        <a class="link" href=@($"{BasePath}/{@context.Id}")>
+                            @context.Points
+                        </a>
+                    </TemplateColumn>
+                }
+                @if (round.Contestants.Any(c => c.Running.HasValue))
+                {
+                    <TemplateColumn Title=@(HasRunningColumnSmall ? "Run" : "Running")
+                        SortBy="GridSort<ContestantData>.ByAscending(c => c.Running)" 
+                        IsDefaultSort="SortDirection.Ascending"
+                        Align="Align.Center">
+                        <a class="link" href=@($"{BasePath}/{@context.Id}")>
+                            @context.Running
+                        </a>
+                    </TemplateColumn>
+                }
             </QuickGrid>
         }
     </div>
 
-</div>
+</main>

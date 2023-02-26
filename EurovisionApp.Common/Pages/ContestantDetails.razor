@@ -3,7 +3,7 @@
 @using Microsoft.AspNetCore.Components.QuickGrid
 @inherits BaseEurovisionPage
 
-<div id="main">
+<main>
 
     <div class="title">
         <EurovisionHeartFlag CountryCode="@Contestant.CountryCode"/>
@@ -16,9 +16,10 @@
 
     @if (Contestant.Videos.Count > 0)
     {
-        <iframe width="560" height="315" src="@Contestant.Videos[0]" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="yt-video">
+            <iframe src="@Contestant.Videos[0]" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
     }
-
 
     <div class="data-container">
         <div class="contest-data">
@@ -70,31 +71,61 @@
             }
             
         </div>
+
+        <div>
+            <p>RESULT @Contest.Year</p>
+            <div>
+                <div>PLACE</div>
+                <div>POINTS</div>
+            </div>
+            <div>RUNNING ORDER: 2</div>
+        </div>
     </div>
+
+    @if (!string.IsNullOrEmpty(Contestant.Tone))
+    {
+        @CreateArmorMusicSheet()
+    }
 
     @if (!Contestant.Lyrics.IsNullOrEmpty())
     {
-        <div>Lyrics</div>
+        string[][][] columns = GetLyricsColumns();
 
-        <InputSelect @bind-Value="LyricsSelectedIndex">
-            @for (int i = 0; i < Contestant.Lyrics.Count; i++)
-            {
-                var lyrics = Contestant.Lyrics[i];
-                <option value="@i">@lyrics.Languages[0]</option>
-            }
-        </InputSelect>
+        <div class="lyrics">
+            <div class="lyrics-header">
+                <span>Lyrics</span>
 
-        <p>@Contestant.Song</p>
+                <InputSelect @bind-Value="LyricsSelectedIndex">
+                    @for (int i = 0; i < Contestant.Lyrics.Count; i++)
+                    {
+                        var lyrics = Contestant.Lyrics[i];
+                        <option value="@i">@lyrics.Languages[0]</option>
+                    }
+                </InputSelect>
+            </div>
 
-        @foreach (string paragraph in Contestant.Lyrics[LyricsSelectedIndex].Content.Split('\r'))
-        {
-            <p>
-                @foreach (string line in paragraph.Split('\n')){
-                    @line
-                    <br />
+            <p class="lyrics-title">@Contestant.Song</p>
+
+            <div class="lyrics-content">
+                @for (int columnIndex = 0; columnIndex < columns.Length; columnIndex++)
+                {
+                    string[][] column = columns[columnIndex];
+                    <div>
+                        @for (int paragraphIndex = 0; paragraphIndex < column.Length; paragraphIndex++)
+                        {
+                            string[] lines = column[paragraphIndex];
+                            <p>
+                                @for (int lineIndex = 0; lineIndex < lines.Length; lineIndex++)
+                                {
+                                    string line = lines[lineIndex];
+                                    @lines[lineIndex]
+                                    if (lineIndex != lines.Length - 1) { <br /> }
+                                }
+                            </p>
+                        }
+                    </div>
                 }
-            </p>
-        }
+            </div>
+        </div>
     }
-
-</div>
+</main>

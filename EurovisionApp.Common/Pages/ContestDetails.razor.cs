@@ -20,10 +20,18 @@ public partial class ContestDetails : IDisposable
     private bool HasPlaceColumnSmall { get; set; }
     private bool HasPointsColumnSmall { get; set; }
     private bool HasRunningColumnSmall { get; set; }
+    private bool IsCancelled { get; set; }
+    private string CancelationMessage { get; set; }
 
     protected override void OnParametersSet()
     {
         base.OnParametersSet();
+
+        if (Settings.CONTESTS_CANCELLED.TryGetValue(Year, out string message))
+        {
+            IsCancelled = true;
+            CancelationMessage = message;
+        }
 
         Contest = GetContestData(GetContest(Year));
     }
@@ -71,35 +79,16 @@ public partial class ContestDetails : IDisposable
         ContestData result = new ContestData()
         {
             Year = contest.Year,
+            Date = GetDate(contest.Rounds),
             Country = contest.Country,
             City = contest.City,
+            Location = GetLocation(contest),
             Slogan = contest.Slogan,
             LogoUrl = contest.LogoUrl,
             Participants = contest.Contestants.Count,
             Voting = contest.Voting,
-            Rounds = GetRoundsData(contest)
+            Rounds = IsCancelled ? GetRoundsDataCancelled(contest) : GetRoundsData(contest)
         };
-
-        StringBuilder dateBuilder = new StringBuilder();
-        for (int i = 0; i < contest.Rounds.Count; i++)
-        {
-            Round round = contest.Rounds[i];
-
-            if (DateTime.TryParse(round.Date, out DateTime date))
-            {
-                if (i < contest.Rounds.Count - 1)
-                    dateBuilder.Append(date.Day + ", ");
-                else
-                    dateBuilder.Append(date.ToString("d MMMM yyyy"));
-            }
-        }
-        result.Date = dateBuilder.ToString();
-
-        StringBuilder locationBuilder = new StringBuilder();
-        if (string.IsNullOrEmpty(contest.Arena)) locationBuilder.Append(contest.Arena + ", ");
-        locationBuilder.Append(contest.City + ", ");
-        locationBuilder.Append(Repository.Countries[contest.Country]);
-        result.Location = locationBuilder.ToString();
 
         if (!contest.Broadcasters.IsNullOrEmpty())
             result.Broadcasters = string.Join(", ", contest.Broadcasters);
@@ -110,7 +99,42 @@ public partial class ContestDetails : IDisposable
         return result;
     }
 
-    private IEnumerable<RoundData> GetRoundsData(Contest contest)
+    private string GetDate(IReadOnlyList<Round> rounds)
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+        rounds = rounds.OrderBy(r => r.Name.First())
+            .ThenBy(r => r.Name.Last())
+            .ToArray();
+
+        for (int i = 0; i < rounds.Count; i++)
+        {
+            Round round = rounds[i];
+
+            if (DateTime.TryParse(round.Date, out DateTime date))
+            {
+                if (i < rounds.Count - 1)
+                    stringBuilder.Append(date.Day + ", ");
+                else
+                    stringBuilder.Append(date.ToString("d MMMM yyyy"));
+            }
+        }
+
+        return stringBuilder.ToString();
+    }
+
+    private string GetLocation(Contest contest)
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        if (string.IsNullOrEmpty(contest.Arena))
+            stringBuilder.Append(contest.Arena + ", ");
+        stringBuilder.Append(contest.City + ", ");
+        stringBuilder.Append(Repository.Countries[contest.Country]);
+
+        return stringBuilder.ToString();
+    }
+
+    private IReadOnlyList<RoundData> GetRoundsData(Contest contest)
     {
         List<RoundData> result = new List<RoundData>();
 
@@ -118,7 +142,13 @@ public partial class ContestDetails : IDisposable
         {
             result.Add(new RoundData()
             {
-                Name = round.Name.ToTitleCase(),
+                Name = round.Name.ToLower() switch
+                {
+                    "final" => "Grand Final",
+                    "semifinal" => "Semifinal",
+                    "semifinal1" => "Semifinal 1",
+                    _ => "Semifinal 2",
+                },
                 Contestants = GetContestantsData(contest, round.Performances)
             });
         }
@@ -126,7 +156,7 @@ public partial class ContestDetails : IDisposable
         return result;
     }
 
-    private ContestantData[] GetContestantsData(Contest contest, IEnumerable<Performance> performances)
+    private IReadOnlyList<ContestantData> GetContestantsData(Contest contest, IReadOnlyList<Performance> performances)
     {
         List<ContestantData> result = new List<ContestantData>();
 
@@ -143,11 +173,43 @@ public partial class ContestDetails : IDisposable
                 Song = contestant.Song,
                 Artist = contestant.Artist,
                 Running = performance.Running,
-                Points = performance.Scores.Sum(s => s.Points)
+                Points = performance.Scores.Count > 0
+                    ? performance.Scores.Sum(s => s.Points)
+                    : null
             });
         }
 
-        return result.ToArray();
+        return result;
+    }
+
+    private IReadOnlyList<RoundData> GetRoundsDataCancelled(Contest contest)
+    {
+        return new RoundData[]
+        {
+            new RoundData()
+            {
+                Contestants = GetContestantsDataCancelled(contest)
+            }
+        };
+    }
+
+    private IReadOnlyList<ContestantData> GetContestantsDataCancelled(Contest contest)
+    {
+        List<ContestantData> result = new List<ContestantData>();
+
+        foreach (var contestant in contest.Contestants)
+        {
+            result.Add(new ContestantData()
+            {
+                Id = contestant.Id,
+                CountryCode = contestant.Country,
+                CountryName = Repository.Countries[contestant.Country],
+                Song = contestant.Song,
+                Artist = contestant.Artist
+            });
+        }
+
+        return result;
     }
 
     private class ContestData
@@ -163,25 +225,24 @@ public partial class ContestDetails : IDisposable
         public string Voting { get; set; }
         public string Presenters { get; set; }
         public string Broadcasters { get; set; }
-        public IEnumerable<RoundData> Rounds { get; set; }
+        public IReadOnlyList<RoundData> Rounds { get; set; }
     }
 
     private class RoundData
     {
         public string Name { get; set; }
-        public DateTime DateTime { get; set; }
         public IReadOnlyList<ContestantData> Contestants { get; set; }
     }
 
     private class ContestantData
     {
         public int Id { get; set; }
-        public int Place { get; set; }
+        public int? Place { get; set; }
         public string CountryCode { get; set; }
         public string CountryName { get; set; }
         public string Song { get; set; }
         public string Artist { get; set; }
-        public int Running { get; set; }
-        public int Points { get; set; }
+        public int? Running { get; set; }
+        public int? Points { get; set; }
     }
 }
