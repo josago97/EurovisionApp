@@ -55,7 +55,7 @@
             }
             @if (!string.IsNullOrEmpty(Contestant.StageDirector))
             {
-                <p><span class="data-entry">StageDirector:</span> @Contestant.StageDirector</p>
+                <p><span class="data-entry">Stage director:</span> @Contestant.StageDirector</p>
             }
             @if (!string.IsNullOrEmpty(Contestant.Writers))
             {
@@ -90,6 +90,7 @@
     @if (!Contestant.Lyrics.IsNullOrEmpty())
     {
         string[][][] columns = GetLyricsColumns();
+        var lyricsSelected = Contestant.Lyrics[LyricsSelectedIndex];
 
         <div class="lyrics">
             <div class="lyrics-header">
@@ -104,7 +105,7 @@
                 </InputSelect>
             </div>
 
-            <p class="lyrics-title">@Contestant.Song</p>
+            <p class="lyrics-title">@lyricsSelected.Title</p>
 
             <div class="lyrics-content">
                 @for (int columnIndex = 0; columnIndex < columns.Length; columnIndex++)

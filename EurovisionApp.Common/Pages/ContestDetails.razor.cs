@@ -12,10 +12,10 @@ public partial class ContestDetails : IDisposable
     private const int MAX_WIDTH_POINTS_COLUMN_SMALL = 500; // px
     private const int MAX_WIDTH_RUNNING_COLUMN_SMALL = 550; // px
 
-    [Parameter]
-    public int Year { get; set; }
     [Inject]
     public IResizeListener ResizeListener { get; set; }
+    [Parameter]
+    public int Year { get; set; }
     private ContestData Contest { get; set; }
     private bool HasPlaceColumnSmall { get; set; }
     private bool HasPointsColumnSmall { get; set; }

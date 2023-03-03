@@ -9,5 +9,6 @@ public class Program
     {
         services.AddMediaQueryService();
         services.AddResizeListener();
+        services.AddSingleton<Navigator>();
     }
 }

@@ -22,6 +22,7 @@ public abstract class BaseEurovisionPage : ComponentBase, IDisposable
     protected PageType Page { get; private set; }
     protected IReadOnlyList<Contest> Contests { get; private set; }
     private string PagePath { get; set; }
+    private bool IsDisposed { get; set; }
 
     protected override void OnInitialized()
     {
@@ -30,12 +31,15 @@ public abstract class BaseEurovisionPage : ComponentBase, IDisposable
 
     private void OnLocationChanged(object sender, LocationChangedEventArgs e)
     {
-        string pagePath = GetPagePath(GetBasePath());
-
-        if (PagePath != pagePath)
+        if (!IsDisposed)
         {
-            OnParametersSet();
-            StateHasChanged();
+            string pagePath = GetPagePath(GetBasePath());
+
+            if (PagePath != pagePath)
+            {
+                OnParametersSet();
+                StateHasChanged();
+            }
         }
     }
 
@@ -89,6 +93,7 @@ public abstract class BaseEurovisionPage : ComponentBase, IDisposable
 
     public virtual void Dispose()
     {
+        IsDisposed = true;
         NavigationManager.LocationChanged -= OnLocationChanged;
     }
 }

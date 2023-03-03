@@ -2,10 +2,11 @@
   "name": "EurovisionApp",
   "short_name": "EurovisionApp",
   "start_url": "./",
+  "lang": "en-US",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#00008b",
-  "orientation": "portrait-primary",
+  "theme_color": "darkblue",
+  "orientation": "natural",
   "prefer_related_applications": false,
   "icons": [
     {

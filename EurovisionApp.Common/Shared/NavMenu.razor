@@ -1,7 +1,16 @@
 ﻿<div class="navbar">
     <div class="header">
-        <div class="title">
-            <img src="@Utils.GetStaticFileUrl("images/eurovision_logo.png")"/>
+        <div>
+            <a class="go-back-button @GoBackButtonCssClass" href="@Navigator.LastUrl">
+                <div class="go-back-button-row">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </a>
+            <div class="title">
+                <img src="@Utils.GetStaticFileUrl("images/eurovision_logo.png")"/>
+            </div>
         </div>
         <div class="navbar-toggler">
             <input type="checkbox" id="navbar-toggler-input" @onchange="ToggleNavMenu">
@@ -25,13 +34,4 @@
     </div>
 </div>
 
-@code {
-    private bool collapseNavMenu = true;
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
-}

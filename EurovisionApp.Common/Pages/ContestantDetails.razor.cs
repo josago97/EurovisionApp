@@ -48,7 +48,7 @@ public partial class ContestantDetails
             Conductor = contestant.Conductor,
             CountryCode = contestant.Country,
             CountryName = Repository.Countries[contestant.Country],
-            Lyrics = contestant.Lyrics,
+            Lyrics = GetLyrics(contestant),
             Song = contestant.Song,
             Spokesperson = contestant.Spokesperson,
             StageDirector = contestant.StageDirector,
@@ -74,50 +74,30 @@ public partial class ContestantDetails
         return result;
     }
 
-    private IEnumerable<RoundData> GetRoundsData(Contest contest)
+    private IReadOnlyList<Lyrics> GetLyrics(Contestant contestant)
     {
-        List<RoundData> result = new List<RoundData>();
+        List<Lyrics> result = new List<Lyrics>();
 
-        foreach (var round in contest.Rounds)
+        foreach (Lyrics lyrics in contestant.Lyrics)
         {
-            result.Add(new RoundData()
+            if (!string.IsNullOrEmpty(lyrics.Content))
             {
-                Name = round.Name.ToTitleCase(),
-                Contestants = GetContestantsData(contest, round.Performances)
-            });
+                if (string.IsNullOrEmpty(lyrics.Title)) lyrics.Title = contestant.Song;
+                result.Add(lyrics);
+            }
         }
 
         return result;
     }
 
-    private ContestantData[] GetContestantsData(Contest contest, IEnumerable<Performance> performances)
-    {
-        List<ContestantData> result = new List<ContestantData>();
-
-        foreach (var performance in performances)
-        {
-            var contestant = contest.Contestants[performance.ContestantId];
-
-            result.Add(new ContestantData()
-            {
-                CountryCode = contestant.Country,
-                CountryName = Repository.Countries[contestant.Country],
-                Song = contestant.Song,
-                Artist = contestant.Artist,
-                Videos = contestant.VideoUrls,
-                Lyrics = contestant.Lyrics
-            });
-        }
-
-        return result.ToArray();
-    }
     private RenderFragment CreateArmorMusicSheet() => builder =>
     {
         string[] toneAndScaleName = Contestant.Tone.Split();
         string toneName = toneAndScaleName[0].Replace("b", "Flat").Replace("#", "Sharp");
         ArmorMusicSheet.Notes tone = Enum.Parse<ArmorMusicSheet.Notes>(toneName, true);
-        ArmorMusicSheet.Scales scale = toneAndScaleName[1].Equals("minor", StringComparison.OrdinalIgnoreCase) ?
-            ArmorMusicSheet.Scales.Minor : ArmorMusicSheet.Scales.Major;
+        ArmorMusicSheet.Scales scale = toneAndScaleName[1].Equals("minor", StringComparison.OrdinalIgnoreCase) 
+            ? ArmorMusicSheet.Scales.Minor 
+            : ArmorMusicSheet.Scales.Major;
 
         builder.OpenComponent(0, typeof(ArmorMusicSheet));
         builder.AddAttribute(1, nameof(ArmorMusicSheet.Tempo), Contestant.Bpm);

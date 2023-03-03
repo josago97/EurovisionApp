@@ -81,7 +81,7 @@
 }
 
 ::deep .quickgrid tbody tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: #00000015;
 }
 
 ::deep .quickgrid td {
