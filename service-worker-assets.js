@@ -65,7 +65,7 @@
       "url": "index.html"
     },
     {
-      "hash": "sha256-bomVMLsGJMTyXrGFHE8Pc6oXKYZvj8TQ4LeM\/ZcHsbY=",
+      "hash": "sha256-IWIVhZMKXJMqF7zQf36JvfZBJWm2Bpi26CAnConbqlg=",
       "url": "manifest.json"
     },
     {
@@ -81,7 +81,7 @@
       "url": "_framework\/dotnet.timezones.blat"
     },
     {
-      "hash": "sha256-9GbHrlag34RewSQQcuFpUb94FQ0iJW9GE\/7KWCM2g1I=",
+      "hash": "sha256-tKemTLwUU6WTogyTObC41rrf\/6gJuu2jT5MpS1OxCpg=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -89,11 +89,11 @@
       "url": "_framework\/BlazorPro.BlazorSize.dll"
     },
     {
-      "hash": "sha256-TNHjFq0UKS4ApcgEZGkQTikoKtNbjbGMUG6jL94IRLw=",
+      "hash": "sha256-80cGLiyRhOIjYbDfBCUMLS8BYQkk9jeBFuT7OnnYdY0=",
       "url": "_framework\/EurovisionApp.Common.dll"
     },
     {
-      "hash": "sha256-rmAf2kSdIPia22\/EGh\/B5tIZOdA6xHZ707C\/zntodSQ=",
+      "hash": "sha256-mfJpk+iWeDnd+gbtjPdOkC5tOcSYZ3BkVwJHuCpMam8=",
       "url": "_framework\/EurovisionApp.Wasm.dll"
     },
     {
@@ -317,7 +317,7 @@
       "url": "_content\/EurovisionApp.Common\/css\/app_tablet.css"
     },
     {
-      "hash": "sha256-37JLiln4hxz3b52jiOhKBB5wEId0Zkr\/+zTTFhJjo5Q=",
+      "hash": "sha256-9O8HJE8w\/ATl3smiPPGL1L0kFNHqMghA+iljtvGKSic=",
       "url": "_content\/EurovisionApp.Common\/css\/app.css"
     },
     {
@@ -325,11 +325,11 @@
       "url": "_content\/EurovisionApp.Common\/data\/countries.json"
     },
     {
-      "hash": "sha256-\/nhfff3V6oY4fPL+Hyhk4r2oKLdSx6KNOIwBPV5XHhg=",
+      "hash": "sha256-NRMuGqnBBQeJndriioWtoUNPVyqTAXE4N7VNqqFsTw0=",
       "url": "_content\/EurovisionApp.Common\/data\/eurovision.json"
     },
     {
-      "hash": "sha256-2NC17IlIu6nnF41KaWqmP8BXGxJ1GAqQMda8YCruVMs=",
+      "hash": "sha256-ovmiFDDRSDRmAjD2B7g\/tW1UVsjfKbChjGgFGuQyfE8=",
       "url": "_content\/EurovisionApp.Common\/data\/junior.json"
     },
     {
@@ -797,9 +797,9 @@
       "url": "_content\/Microsoft.AspNetCore.Components.QuickGrid\/Microsoft.AspNetCore.Components.QuickGrid.bundle.scp.css"
     },
     {
-      "hash": "sha256-c+377MSwZD1ekQjWrxhcM0+gZ5Vi+MnQ19kGgeGx6Rw=",
+      "hash": "sha256-O\/6J6123Sg66aENiGAvKnIhdtugZWiQVYbGPufAxq84=",
       "url": "_content\/EurovisionApp.Common\/EurovisionApp.Common.bundle.scp.css"
     }
   ],
-  "version": "rtQs5GGT"
+  "version": "T0kgA3pj"
 };

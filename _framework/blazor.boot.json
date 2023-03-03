@@ -8,8 +8,8 @@
   "resources": {
     "assembly": {
       "BlazorPro.BlazorSize.dll": "sha256-zv4OFwMDBQvombUD8IMsF7BpNTqbkBi7wzt9Plz0owY=",
-      "EurovisionApp.Common.dll": "sha256-TNHjFq0UKS4ApcgEZGkQTikoKtNbjbGMUG6jL94IRLw=",
-      "EurovisionApp.Wasm.dll": "sha256-rmAf2kSdIPia22\/EGh\/B5tIZOdA6xHZ707C\/zntodSQ=",
+      "EurovisionApp.Common.dll": "sha256-80cGLiyRhOIjYbDfBCUMLS8BYQkk9jeBFuT7OnnYdY0=",
+      "EurovisionApp.Wasm.dll": "sha256-mfJpk+iWeDnd+gbtjPdOkC5tOcSYZ3BkVwJHuCpMam8=",
       "Microsoft.AspNetCore.Components.dll": "sha256-l6igX9wRHpRD\/X11TzhBpZTZNCH8liu3359royc4uow=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-rdT9swKzRQEOehVLLyL7HiXLv1DC95n28XYt9REcE6M=",
       "Microsoft.AspNetCore.Components.QuickGrid.dll": "sha256-PW\/wHFaTp8vYiuguHaQ3AwRZufEAL3poOUlA2LvA0BA=",
