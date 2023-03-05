@@ -65,7 +65,7 @@
       "url": "index.html"
     },
     {
-      "hash": "sha256-IWIVhZMKXJMqF7zQf36JvfZBJWm2Bpi26CAnConbqlg=",
+      "hash": "sha256-7b0v86U0rK+CZAmW5oumFOljkSNkiulUIqeH3kIgz74=",
       "url": "manifest.json"
     },
     {
@@ -801,5 +801,5 @@
       "url": "_content\/EurovisionApp.Common\/EurovisionApp.Common.bundle.scp.css"
     }
   ],
-  "version": "T0kgA3pj"
+  "version": "4oqf1rjg"
 };
