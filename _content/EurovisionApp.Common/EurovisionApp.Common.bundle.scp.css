@@ -72,8 +72,23 @@ svg[b-l5lnnssp2b] {
     height: 100%;
 }
 
+.round-result[b-jb8rm7pqpp] {
+    display: inline-block;
+    padding: 5px;
+    box-shadow: 0 0 5px black;
+    border-radius: 10px;
+}
+
+.music-sheet[b-jb8rm7pqpp] {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
 .lyrics-header[b-jb8rm7pqpp] {
-    background-color: var(--data-box-color);
+    background-color: var(--info-box-color);
     padding: 0.5em;
     display: flex;
     justify-content: space-between;
@@ -109,7 +124,7 @@ svg[b-l5lnnssp2b] {
 }
 
 .contest-data[b-wxfmknxex4] {
-    background-color: var(--data-box-color);
+    background-color: var(--info-box-color);
     border-radius: 20px;
     padding: 10px;
     width: 100%;
@@ -163,7 +178,7 @@ svg[b-l5lnnssp2b] {
 }
 
 [b-wxfmknxex4] .quickgrid thead {
-    background-color: var(--data-box-color);
+    background-color: var(--info-box-color);
 }
 
 [b-wxfmknxex4] .quickgrid th:not(:last-child) {
