@@ -1,4 +1,5 @@
-﻿using EurovisionApp.Common.Logic.Data.Models.Eurovision;
+﻿using System.Text.Json;
+using EurovisionApp.Common.Logic.Data.Models;
 using SpanJson;
 using SpanJson.Resolvers;
 
@@ -36,7 +37,13 @@ public abstract class BaseRepository : IRepository
 
     private async Task GetSeniorContestsAsync()
     {
-        SeniorContests = await GetAsync<Contest[]>(CONTESTS_FILENAME);
+        try
+        {
+            SeniorContests = await GetAsync<Contest[]>(CONTESTS_FILENAME);
+        }
+        catch (Exception e) 
+        { 
+        }
     }
 
     private async Task GetJuniorContestsAsync()
@@ -48,7 +55,13 @@ public abstract class BaseRepository : IRepository
     {
         string json = await GetJsonDataAsync(Utils.GetStaticFileUrl("data/" + filename));
 
-        return JsonSerializer.Generic.Utf16.Deserialize<T, IncludeNullsCamelCaseResolver<char>>(json);
+            JsonSerializerOptions _jsonOptions = new JsonSerializerOptions()
+            {
+                PropertyNameCaseInsensitive = true
+            };
+
+        return System.Text.Json.JsonSerializer.Deserialize<T>(json, _jsonOptions);
+        //return JsonSerializer.Generic.Utf16.Deserialize<T, IncludeNullsCamelCaseResolver<char>>(json);
     }
 
     protected abstract Task<string> GetJsonDataAsync(string filename);

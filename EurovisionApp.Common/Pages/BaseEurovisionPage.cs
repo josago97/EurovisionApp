@@ -1,5 +1,5 @@
 ﻿using EurovisionApp.Common.Logic.Data;
-using EurovisionApp.Common.Logic.Data.Models.Eurovision;
+using EurovisionApp.Common.Logic.Data.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Routing;
 

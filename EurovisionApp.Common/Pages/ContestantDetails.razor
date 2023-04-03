@@ -61,30 +61,50 @@
             {
                 <p><span class="data-entry">Writers:</span> @Contestant.Writers</p>
             }
-            @if (Contestant.Bpm.HasValue)
-            {
-                <p><span class="data-entry">Beats per minute:</span> @Contestant.Bpm</p>
-            }
-            @if (!string.IsNullOrEmpty(Contestant.Tone))
-            {
-                <p><span class="data-entry">Tone:</span> @Contestant.Tone</p>
-            }
             
         </div>
 
-        <div>
-            <p>RESULT @Contest.Year</p>
-            <div>
-                <div>PLACE</div>
-                <div>POINTS</div>
+        @foreach (var round in Rounds)
+        {
+            string placeClass = round.Place switch
+            {
+                1 => "first-place",
+                2 => "second-place",
+                3 => "third-place",
+                _ => ""
+            };
+
+            <div class="round-result @placeClass">
+                <p>@round.Name</p>
+                <div>
+                    <div>PLACE</div>
+                    <div>@round.Place / @round.Contestants</div>
+                    <div>POINTS</div>
+                    <div>@round.Points</div>
+                </div>
+                <div>RUNNING ORDER: @round.Running</div>
             </div>
-            <div>RUNNING ORDER: 2</div>
-        </div>
+        }
+
+        
     </div>
 
-    @if (!string.IsNullOrEmpty(Contestant.Tone))
+    @if (Contestant.MusicSheet != null)
     {
-        @CreateArmorMusicSheet()
+        <div class="music-sheet">        
+            <div class="contest-data">
+                @if (Contestant.MusicSheet.Bpm.HasValue)
+                {
+                    <p><span class="data-entry">Beats per minute:</span> @Contestant.MusicSheet.Bpm</p>
+                }
+                @if (!string.IsNullOrEmpty(Contestant.MusicSheet.Tone))
+                {
+                    <p><span class="data-entry">Tone:</span> @Contestant.MusicSheet.Tone</p>
+                }
+            </div>
+
+            @Contestant.MusicSheet.ArmorMusicSheet
+        </div>
     }
 
     @if (!Contestant.Lyrics.IsNullOrEmpty())
@@ -108,20 +128,13 @@
             <p class="lyrics-title">@lyricsSelected.Title</p>
 
             <div class="lyrics-content">
-                @for (int columnIndex = 0; columnIndex < columns.Length; columnIndex++)
+                @foreach (string[][] column in columns)
                 {
-                    string[][] column = columns[columnIndex];
                     <div>
-                        @for (int paragraphIndex = 0; paragraphIndex < column.Length; paragraphIndex++)
+                        @foreach (string[] lines in column)
                         {
-                            string[] lines = column[paragraphIndex];
                             <p>
-                                @for (int lineIndex = 0; lineIndex < lines.Length; lineIndex++)
-                                {
-                                    string line = lines[lineIndex];
-                                    @lines[lineIndex]
-                                    if (lineIndex != lines.Length - 1) { <br /> }
-                                }
+                                @(new MarkupString(string.Join("<br />", lines)));
                             </p>
                         }
                     </div>

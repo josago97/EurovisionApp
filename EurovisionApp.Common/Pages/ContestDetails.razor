@@ -12,7 +12,7 @@
 
     <div class="data-container">
         <div class="contest-data">
-            @if (!string.IsNullOrEmpty(Contest.Date)) { <p><span class="data-entry">Date:</span> @Contest.Date</p> }
+            @if (!string.IsNullOrEmpty(Contest.DateTime)) { <p><span class="data-entry">Date:</span> @Contest.DateTime</p> }
             @if (!string.IsNullOrEmpty(Contest.Location)) { <p><span class="data-entry">Location:</span> @Contest.Location</p> }
             @if (!string.IsNullOrEmpty(Contest.Slogan)) { <p><span class="data-entry">Slogan:</span> @Contest.Slogan</p> }
             @if (!string.IsNullOrEmpty(Contest.Broadcasters)) { <p><span class="data-entry">Broadcasters:</span> @Contest.Broadcasters</p> }

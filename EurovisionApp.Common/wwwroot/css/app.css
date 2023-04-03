@@ -1,5 +1,5 @@
 ﻿:root {
-    --data-box-color: #C8C7F2AA;
+    --info-box-color: #C8C7F2AA;
 }
 
 html, body {
@@ -30,7 +30,7 @@ a.link {
 }
 
 .contest-data {
-    background-color: var(--data-box-color);
+    background-color: var(--info-box-color);
     border-radius: 20px;
     padding: 10px;
 }
@@ -46,15 +46,15 @@ a.link {
 /*----------- Podium -------------*/
 
 .first-place {
-    color: #FFD700
+    background-color: #FFD700C0;
 }
 
 .second-place {
-    color: #C0C0C0
+    background-color: #C0C0C0C0;
 }
 
 .third-place {
-    color: #CB6D51
+    background-color: #CB6D51C0;
 }
 
 /*---------------------------------*/

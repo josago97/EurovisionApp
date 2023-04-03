@@ -1,8 +1,9 @@
 ﻿namespace EurovisionApp.Common.Logic.Data.Models;
 
-public abstract class Contestant : IEquatable<Contestant>
+public class Contestant : IEquatable<Contestant>
 {
     public int Id { get; set; }
+    public string Country { get; set; }
     public string Artist { get; set; }
     public string Song { get; set; }
     public IReadOnlyList<Lyrics> Lyrics { get; set; }
@@ -14,6 +15,11 @@ public abstract class Contestant : IEquatable<Contestant>
     public IReadOnlyList<string> Writers { get; set; }
     public string Conductor { get; set; }
     public string StageDirector { get; set; }
+    public string Tone { get; set; }
+    public int? Bpm { get; set; }
+    public string Broadcaster { get; set; }
+    public string Spokesperson { get; set; }
+    public IReadOnlyList<string> Commentators { get; set; }
 
     public virtual bool Equals(Contestant other)
     {

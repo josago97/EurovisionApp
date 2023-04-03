@@ -1,19 +1,21 @@
+Ôªøusing System.Data;
 using EurovisionApp.Common.Components;
 using EurovisionApp.Common.Logic.Data.Models;
 using Microsoft.AspNetCore.Components;
-using Contest = EurovisionApp.Common.Logic.Data.Models.Eurovision.Contest;
-using Contestant = EurovisionApp.Common.Logic.Data.Models.Eurovision.Contestant;
 
 namespace EurovisionApp.Common.Pages;
 
 public partial class ContestantDetails
 {
+    private const int LYRICS_COLUMNS = 2;
+
     [Parameter]
     public int Year { get; set; }
     [Parameter]
     public int ContestantId { get; set; }
     private ContestData Contest { get; set; }
     private ContestantData Contestant { get; set; }
+    private IList<RoundData> Rounds { get; set; }
     private int LyricsSelectedIndex { get; set; }
 
     protected override void OnParametersSet()
@@ -23,6 +25,7 @@ public partial class ContestantDetails
         Contest contest = GetContest(Year);
         Contest = GetContestData(contest);
         Contestant = GetContestantData(contest, ContestantId);
+        Rounds = GetRounds(contest, ContestantId);
     }
 
     private ContestData GetContestData(Contest contest)
@@ -33,6 +36,33 @@ public partial class ContestantDetails
             Country = contest.Country
         };
 
+        return result;
+    }
+
+    private IList<RoundData> GetRounds(Contest contest, int contestantId)
+    {
+        List<RoundData> result = new List<RoundData>();
+
+        for (int i = 0; i < contest.Rounds.Count; i++)
+        {
+            Round round = contest.Rounds[i];
+            Performance performance = round.Performances.FirstOrDefault(p => p.ContestantId == contestantId);
+
+            if (performance != null)
+            {
+                result.Add(new RoundData()
+                {
+                    Name = Utils.GetDisplayRoundName(round.Name),
+                    Place = performance.Place,
+                    Contestants = round.Performances.Count,
+                    Points = performance.Scores.Count > 0
+                        ? performance.Scores.Sum(s => s.Points)
+                        : null,
+                    Running = performance.Running
+                });
+            }
+        }
+        
         return result;
     }
 
@@ -49,6 +79,7 @@ public partial class ContestantDetails
             CountryCode = contestant.Country,
             CountryName = Repository.Countries[contestant.Country],
             Lyrics = GetLyrics(contestant),
+            MusicSheet = GetMusicSheet(contestant),
             Song = contestant.Song,
             Spokesperson = contestant.Spokesperson,
             StageDirector = contestant.StageDirector,
@@ -90,6 +121,37 @@ public partial class ContestantDetails
         return result;
     }
 
+    private MusicSheet GetMusicSheet(Contestant contestant)
+    {
+        MusicSheet result = null;
+
+        if (!string.IsNullOrEmpty(contestant.Tone))
+        {
+            string[] toneAndScaleName = contestant.Tone.Split();
+            string toneName = toneAndScaleName[0].Replace("b", "Flat").Replace("#", "Sharp");
+            ArmorMusicSheet.Notes tone = Enum.Parse<ArmorMusicSheet.Notes>(toneName, true);
+            ArmorMusicSheet.Scales scale = toneAndScaleName[1].Equals("minor", StringComparison.OrdinalIgnoreCase)
+                ? ArmorMusicSheet.Scales.Minor
+                : ArmorMusicSheet.Scales.Major;
+
+            result = new MusicSheet()
+            {
+                Tone = $"{toneAndScaleName[0]} {toneAndScaleName[1].ToTitleCase()}",
+                Bpm = contestant.Bpm,
+                ArmorMusicSheet = new RenderFragment(builder =>
+                {
+                    builder.OpenComponent(0, typeof(ArmorMusicSheet));
+                    builder.AddAttribute(1, nameof(ArmorMusicSheet.Tempo), contestant.Bpm);
+                    builder.AddAttribute(2, nameof(ArmorMusicSheet.Tone), tone);
+                    builder.AddAttribute(3, nameof(ArmorMusicSheet.Scale), scale);
+                    builder.CloseComponent();
+                }),
+            };
+        }
+
+        return result;
+    }
+
     private RenderFragment CreateArmorMusicSheet() => builder =>
     {
         string[] toneAndScaleName = Contestant.Tone.Split();
@@ -109,14 +171,12 @@ public partial class ContestantDetails
     // Columns / Paragraph / Line
     private string[][][] GetLyricsColumns()
     {
-        string qa = Contestant.Lyrics[LyricsSelectedIndex].Content;
-        string[] w = qa.Split('\r');
-        string[][][] result = new string[2][][];
-        string[][] paragraphs = Contestant.Lyrics[LyricsSelectedIndex].Content
-            .Split('\r')
-            .Select(p => p.Split("\n").Where(l => !string.IsNullOrEmpty(l)).ToArray())
-            .Where(p => p.Length > 0)
-            .ToArray();
+        string[][][] result = new string[LYRICS_COLUMNS][][];
+
+        string content = Contestant.Lyrics[LyricsSelectedIndex].Content;
+        string[] paragraphGroups = content.Split("\n\n");
+        string[][] paragraphs = paragraphGroups.Select(s => s.Split('\n')).ToArray();
+
         int totalLines = paragraphs.Sum(p => p.Length + 1); // Lines break (+1)
         int middleLines = (int)Math.Ceiling(totalLines / 2.0);
         int middle = 0;
@@ -125,9 +185,9 @@ public partial class ContestantDetails
         {
             int lines = paragraphs[middle].Length + 1; // Line break (+1)
 
-            // Si lo que me queda es menor que la mitad del p·rrafo,
-            // entonces lo aÒado mejor a la otra mitad, ya que est·
-            // m·s cerca de la segunda mitad que de la primera
+            // Si lo que me queda es menor que la mitad del p√°rrafo,
+            // entonces lo a√±ado mejor a la otra mitad, ya que est√°
+            // m√°s cerca de la segunda mitad que de la primera
             if (middleLines < lines / 2)
                 middleLines = 0;
             else
@@ -165,8 +225,10 @@ public partial class ContestantDetails
     private class RoundData
     {
         public string Name { get; set; }
-        public DateTime DateTime { get; set; }
-        public IReadOnlyList<ContestantData> Contestants { get; set; }
+        public int Place { get; set; }
+        public int Contestants { get; set; }
+        public int? Points { get; set; }
+        public int? Running { get; set; }
     }
 
     private class ContestantData
@@ -182,6 +244,7 @@ public partial class ContestantDetails
         public string CountryName { get; set; }
         public string Dancers { get; set; }
         public IReadOnlyList<Lyrics> Lyrics { get; set; }
+        public MusicSheet MusicSheet { get; set; }
         public int? Place { get; set; }
         public int? Points { get; set; }
         public int? Running { get; set; }
@@ -191,5 +254,14 @@ public partial class ContestantDetails
         public string Tone { get; set; }
         public IReadOnlyList<string> Videos { get; set; }
         public string Writers { get; set; }
+    }
+
+    private class MusicSheet
+    {
+        public string Tone { get; set; }
+        public int? Bpm { get; set; }
+        public RenderFragment ArmorMusicSheet { get; set; }
+        ArmorMusicSheet.Notes ArmorTone { get; set; }
+        ArmorMusicSheet.Scales ArmorScale { get; set; }
     }
 }

@@ -8,8 +8,8 @@ namespace EurovisionApp.Common.Components
         public enum Notes { CFlat, C, CSharp, DFlat, D, DSharp, EFlat, E, ESharp, FFlat, F, FSharp, GFlat, G, GSharp, AFlat, A, ASharp, BFlat, B, BSharp };
         public enum Scales { Major, Minor };
 
-        private const int TEMPO_POSITION_Y = 20;
-        private const int STAFF_POSITION_Y = TEMPO_POSITION_Y + 20;
+        private const int TEMPO_POSITION_Y = 10;
+        private const int STAFF_POSITION_Y = TEMPO_POSITION_Y + 15;
         private const int STAFF_WIDTH = 90;
         private const int STAFF_SEPARATION = 6;
         private const int ALTERATION_SEPARATION = 8;

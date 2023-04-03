@@ -11,7 +11,7 @@
 }
 
 .contest-data {
-    background-color: var(--data-box-color);
+    background-color: var(--info-box-color);
     border-radius: 20px;
     padding: 10px;
     width: 100%;
@@ -65,7 +65,7 @@
 }
 
 ::deep .quickgrid thead {
-    background-color: var(--data-box-color);
+    background-color: var(--info-box-color);
 }
 
 ::deep .quickgrid th:not(:last-child) {

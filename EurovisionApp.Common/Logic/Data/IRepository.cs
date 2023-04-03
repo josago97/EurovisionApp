@@ -1,4 +1,4 @@
-﻿using EurovisionApp.Common.Logic.Data.Models.Eurovision;
+﻿using EurovisionApp.Common.Logic.Data.Models;
 
 namespace EurovisionApp.Common.Logic.Data;
 

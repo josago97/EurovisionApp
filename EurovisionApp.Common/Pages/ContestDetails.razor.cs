@@ -2,7 +2,7 @@ using System.Text;
 using BlazorPro.BlazorSize;
 using EurovisionApp.Common.Logic.Data.Models;
 using Microsoft.AspNetCore.Components;
-using Contest = EurovisionApp.Common.Logic.Data.Models.Eurovision.Contest;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace EurovisionApp.Common.Pages;
 
@@ -79,7 +79,7 @@ public partial class ContestDetails : IDisposable
         ContestData result = new ContestData()
         {
             Year = contest.Year,
-            Date = GetDate(contest.Rounds),
+            DateTime = GetDateTime(contest.Rounds),
             Country = contest.Country,
             City = contest.City,
             Location = GetLocation(contest),
@@ -99,7 +99,7 @@ public partial class ContestDetails : IDisposable
         return result;
     }
 
-    private string GetDate(IReadOnlyList<Round> rounds)
+    private string GetDateTime(IReadOnlyList<Round> rounds)
     {
         StringBuilder stringBuilder = new StringBuilder();
         rounds = rounds.OrderBy(r => r.Name.First())
@@ -110,12 +110,17 @@ public partial class ContestDetails : IDisposable
         {
             Round round = rounds[i];
 
-            if (DateTime.TryParse(round.Date, out DateTime date))
+            if (i < rounds.Count - 1)
+                stringBuilder.Append(round.Date.Day + ", ");
+            else
             {
-                if (i < rounds.Count - 1)
-                    stringBuilder.Append(date.Day + ", ");
-                else
-                    stringBuilder.Append(date.ToString("d MMMM yyyy"));
+                stringBuilder.Append(round.Date.ToString("d MMMM yyyy"));
+
+                if (round.Time.HasValue) 
+                {
+                    stringBuilder.Append(" ");
+                    stringBuilder.Append(round.Time.Value.ToString("0:00 UTC")); 
+                }
             }
         }
 
@@ -142,13 +147,7 @@ public partial class ContestDetails : IDisposable
         {
             result.Add(new RoundData()
             {
-                Name = round.Name.ToLower() switch
-                {
-                    "final" => "Grand Final",
-                    "semifinal" => "Semifinal",
-                    "semifinal1" => "Semifinal 1",
-                    _ => "Semifinal 2",
-                },
+                Name = Utils.GetDisplayRoundName(round.Name),
                 Contestants = GetContestantsData(contest, round.Performances)
             });
         }
@@ -160,9 +159,9 @@ public partial class ContestDetails : IDisposable
     {
         List<ContestantData> result = new List<ContestantData>();
 
-        foreach (var performance in performances)
+        foreach (Performance performance in performances)
         {
-            var contestant = contest.Contestants[performance.ContestantId];
+            Contestant contestant = contest.Contestants[performance.ContestantId];
 
             result.Add(new ContestantData()
             {
@@ -217,7 +216,7 @@ public partial class ContestDetails : IDisposable
         public int Year { get; set; }
         public string Country { get; set; }
         public string City { get; set; }
-        public string Date { get; set; }
+        public string DateTime { get; set; }
         public string Location { get; set; }
         public string Slogan { get; set; }
         public string LogoUrl { get; set; }

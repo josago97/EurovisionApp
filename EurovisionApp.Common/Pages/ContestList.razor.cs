@@ -1,3 +1,4 @@
+using EurovisionApp.Common.Logic.Data.Models;
 namespace EurovisionApp.Common.Pages;
 
 public partial class ContestList
@@ -24,7 +25,7 @@ public partial class ContestList
         Contests = AllContests = GetContests(base.Contests);
     }
 
-    private IEnumerable<ContestData> GetContests(IReadOnlyList<Logic.Data.Models.Eurovision.Contest> contests)
+    private IEnumerable<ContestData> GetContests(IReadOnlyList<Contest> contests)
     {
         List<ContestData> result = new List<ContestData>();
 
