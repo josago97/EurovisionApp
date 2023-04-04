@@ -81,7 +81,7 @@
       "url": "_framework\/dotnet.timezones.blat"
     },
     {
-      "hash": "sha256-\/I9Xmx7fuVznTCk8MmLVggm3wLKqaSa8sOOh6MLSzKM=",
+      "hash": "sha256-BA7jUqxmkJ8P3pDTjwo7nemJ2gbcZbRS98N9GMuci0k=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -277,11 +277,11 @@
       "url": "_framework\/System.Threading.dll"
     },
     {
-      "hash": "sha256-vwJJAUpDn63VHm+\/N560YGN80iWSNUld7+1yiBxTCp8=",
+      "hash": "sha256-GzHRRkzkaq1QcNsb+uRRB+U6Pm5wYyXmqIzP4Eg5P0U=",
       "url": "_framework\/dotnet.7.0.4.qkfmj81bw1.js"
     },
     {
-      "hash": "sha256-NcaacQ5barwqxWUCG3Zzgci1ofCIPjjvCa4W51gVQRg=",
+      "hash": "sha256-5zO\/7VUcFqzi4xt9E75JojCSMrmhEQiazcCL0YIGuW4=",
       "url": "_framework\/dotnet.wasm"
     },
     {
@@ -801,5 +801,5 @@
       "url": "_content\/EurovisionApp.Common\/EurovisionApp.Common.bundle.scp.css"
     }
   ],
-  "version": "QC3p2uAD"
+  "version": "dKcAgi6+"
 };
