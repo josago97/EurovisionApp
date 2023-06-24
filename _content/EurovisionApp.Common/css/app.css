@@ -1,5 +1,6 @@
 ﻿:root {
     --info-box-color: #C8C7F2AA;
+    --theme-color: darkblue;
 }
 
 html, body {
@@ -9,24 +10,35 @@ html, body {
 body {
     margin: 0;
     font-size: 100%;
+    min-width: 100%;
+    min-height: 100%;
 }
 
 *, ::after, ::before {
     box-sizing: border-box;
 }
 
-#main {
+main {
     margin: 20px;
+    
 }
 
-main {
+div#main {
     margin: auto;
-    max-width: 800px;
+    max-width: 1000px;
 }
 
 a.link {
-    text-decoration: none;
+    text-decoration: none !important;
     color: inherit;
+}
+
+a.link:hover {
+    color: inherit;
+}
+
+select:hover {
+    cursor: pointer;
 }
 
 .contest-data {
@@ -42,6 +54,34 @@ a.link {
 .hide {
     display: none !important;
 }
+
+/*-------------- Loading Screen ------------------*/
+
+.loading-container {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.loading-container img {
+    width: 70vmin;
+    filter: invert(100%);
+}
+
+.loading-container .progress-container {
+    height: 20px;
+}
+
+/*---------------------------------*/
+
+
 
 /*----------- Podium -------------*/
 
@@ -59,6 +99,7 @@ a.link {
 
 /*---------------------------------*/
 
+/*------------- Fonts --------------*/
 
 @font-face {
     font-family: 'Eurovision';
@@ -74,3 +115,5 @@ a.link {
     font-family: 'Polihymnia';
     src: url('../fonts/Polihymnia.ttf') format('truetype');
 }
+
+/*---------------------------------*/

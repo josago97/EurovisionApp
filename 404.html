@@ -1,44 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <base href="/EurovisionApp/" />
-        <!--<link rel="import" href="_content/EurovisionApp.Common/wwwroot/index.html">-->
-        <link rel="icon" type="image/png" href="favicon.png" />
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="darkblue" />
+    <title>EurovisionApp</title>
+    <base href="/EurovisionApp/" />
+    <link rel="icon" type="image/png" href="favicon.png" />
 
-        <link href="_content/EurovisionApp.Common/css/app.css" rel="stylesheet" />
-        <link rel="stylesheet" media="only screen and (min-width: 800px)" href="_content/EurovisionApp.Common/css/app_desktop.css" />
-        <link rel="stylesheet" media="only screen and (min-width: 500px) and (max-width: 799.9px)" href="_content/EurovisionApp.Common/css/app_tablet.css" />
-        <link rel="stylesheet" media="only screen and (max-width: 499.9px)" href="_content/EurovisionApp.Common/css/app_mobile.css" />
+    <!-- External libraries -->
+    <link rel="stylesheet" href="_content/BootstrapBlazor.FontAwesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="_content/BootstrapBlazor/css/bootstrap.blazor.bundle.min.css" />
 
-        <!--<link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />-->
-        <link href="css/app.css" rel="stylesheet" />
-        <link href="EurovisionApp.Wasm.styles.css" rel="stylesheet" />
-        <link href="manifest.json" rel="manifest" />
-        <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
-        <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png" />
+    <!-- Common project links -->
+    <link rel="stylesheet" href="_content/EurovisionApp.Common/css/app.css" />
+    <link rel="stylesheet" media="only screen and (min-width: 800px)" href="_content/EurovisionApp.Common/css/app_desktop.css" />
+    <link rel="stylesheet" media="only screen and (min-width: 500px) and (max-width: 799.9px)" href="_content/EurovisionApp.Common/css/app_tablet.css" />
+    <link rel="stylesheet" media="only screen and (max-width: 499.9px)" href="_content/EurovisionApp.Common/css/app_mobile.css" />
 
-    </head>
+    <!-- WASM project links -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="EurovisionApp.Wasm.styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png" />
+</head>
 
-    <body>
-        <div id="app">
-            <svg class="loading-progress">
-                <circle r="40%" cx="50%" cy="50%" />
-                <circle r="40%" cx="50%" cy="50%" />
-            </svg>
-            <div class="loading-progress-text"></div>
+<body>
+    <div id="app">
+        <div class="loading-container">
+            <img src="_content/EurovisionApp.Common/images/eurovision_logo.png" />
+            <div class="progress-container">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"></div>
+                </div>
+                <div class="loading-progress-text"></div>
+            </div>
         </div>
+    </div>
 
-        <div id="blazor-error-ui">
-            An unhandled error has occurred.
-            <a href="" class="reload">Reload</a>
-            <a class="dismiss">🗙</a>
-        </div>
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
 
-        <script src="_framework/blazor.webassembly.js"></script>
-        <script>navigator.serviceWorker.register('service-worker.js');</script>
-    </body>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script>navigator.serviceWorker.register('service-worker.js');</script>
+    <script src="_content/BootstrapBlazor/js/bootstrap.blazor.bundle.min.js"></script>
+</body>
 
 </html>

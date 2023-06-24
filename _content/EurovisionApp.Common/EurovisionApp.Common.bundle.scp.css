@@ -23,7 +23,7 @@ svg[b-l5lnnssp2b] {
 
 .title img[b-3kmq0eo424] {
     position: relative;
-    bottom: -0.15em;
+    bottom: 0.05em;
     width: 1em;
 }
 
@@ -111,6 +111,10 @@ svg[b-l5lnnssp2b] {
     margin: 0 0 1em 0;
 }
 /* _content/EurovisionApp.Common/Pages/ContestDetails.razor.rz.scp.css */
+#main[b-wxfmknxex4] {
+    max-width: 850px;
+}
+
 .title[b-wxfmknxex4] {
     font-size: 1.5rem;
     margin: 20px 0;
@@ -128,11 +132,6 @@ svg[b-l5lnnssp2b] {
     border-radius: 20px;
     padding: 10px;
     width: 100%;
-}
-
-.mensage-cancelation[b-wxfmknxex4] {
-    margin: auto;
-    font-weight: bold;
 }
 
 .logo[b-wxfmknxex4] {
@@ -197,6 +196,10 @@ svg[b-l5lnnssp2b] {
   background-color: #00000015;
 }
 
+[b-wxfmknxex4] .quickgrid tbody tr:hover {
+  background-color: #0000ff10;
+}
+
 [b-wxfmknxex4] .quickgrid td {
     padding: 5px 0.2em !important; 
 }
@@ -238,7 +241,7 @@ a.link[b-wxfmknxex4] {
     }
 }
 /* _content/EurovisionApp.Common/Pages/ContestList.razor.rz.scp.css */
-main[b-8jkh0kaqiz] {
+#main[b-8jkh0kaqiz] {
     max-width: 1200px;
 }
 
@@ -279,42 +282,11 @@ input[b-8jkh0kaqiz] {
     box-shadow: 0 0 20px darkblue;
 }
 /* _content/EurovisionApp.Common/Shared/MainLayout.razor.rz.scp.css */
-.loading-container[b-emskss0lbm] {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.loading-container img[b-emskss0lbm] {
-    width: 70vmin;
-    filter: invert(100%);
-}
-
-.loading-container .message[b-emskss0lbm] {
-    display: flex;
-    flex-flow: row;
-    gap: 2vmin;
-    align-items: center;
-    justify-content: center;
-}
-
-.loading-container .message p[b-emskss0lbm] {
-    margin: 5px 0 0 0;
-    font-size: 5vmin;
-    font-weight: bold;
-}
-
-.loading-container .spinner[b-emskss0lbm] {
+.spinner[b-emskss0lbm] {
+    margin: auto;
     width: 6vmin;
     height: 6vmin;
-    border: 0.7vmin solid black;
+    border: 0.7vmin solid var(--theme-color);
     border-bottom-color: transparent;
     border-radius: 50%;
     display: inline-block;
@@ -330,12 +302,16 @@ input[b-8jkh0kaqiz] {
 .navbar[b-mv5irjltva] {
     --header-size: 70px;
 
-    display: grid;
-    grid-template-columns: auto;
+    display: flex;
+    flex-direction: row;
     background-color: darkblue;
     color: white;
     font-family: Eurovision;
     font-size: 2em;
+
+    /* Disable bootstrap */
+    padding: 0;
+    align-items: initial;
 }
 
 .navbar *[b-mv5irjltva] {
@@ -344,6 +320,7 @@ input[b-8jkh0kaqiz] {
 
 .header[b-mv5irjltva] {
     display: grid;
+    width: 10%;
     grid-template-columns: repeat(2, auto);
     grid-template-rows: 100%;
     justify-content: space-between;
@@ -578,6 +555,3 @@ input[b-8jkh0kaqiz] {
         display: initial !important;
     }
 }
-
-
-
