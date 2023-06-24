@@ -1,39 +1,8 @@
-.loading-container {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.loading-container img {
-    width: 70vmin;
-    filter: invert(100%);
-}
-
-.loading-container .message {
-    display: flex;
-    flex-flow: row;
-    gap: 2vmin;
-    align-items: center;
-    justify-content: center;
-}
-
-.loading-container .message p {
-    margin: 5px 0 0 0;
-    font-size: 5vmin;
-    font-weight: bold;
-}
-
-.loading-container .spinner {
+.spinner {
+    margin: auto;
     width: 6vmin;
     height: 6vmin;
-    border: 0.7vmin solid black;
+    border: 0.7vmin solid var(--theme-color);
     border-bottom-color: transparent;
     border-radius: 50%;
     display: inline-block;

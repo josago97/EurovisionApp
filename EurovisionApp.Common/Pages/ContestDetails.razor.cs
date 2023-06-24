@@ -2,7 +2,6 @@ using System.Text;
 using BlazorPro.BlazorSize;
 using EurovisionApp.Common.Logic.Data.Models;
 using Microsoft.AspNetCore.Components;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace EurovisionApp.Common.Pages;
 
@@ -20,16 +19,15 @@ public partial class ContestDetails : IDisposable
     private bool HasPlaceColumnSmall { get; set; }
     private bool HasPointsColumnSmall { get; set; }
     private bool HasRunningColumnSmall { get; set; }
-    private bool IsCancelled { get; set; }
     private string CancelationMessage { get; set; }
-
+    private bool IsCancelled => !string.IsNullOrEmpty(CancelationMessage);
+    
     protected override void OnParametersSet()
     {
         base.OnParametersSet();
 
         if (Settings.CONTESTS_CANCELLED.TryGetValue(Year, out string message))
         {
-            IsCancelled = true;
             CancelationMessage = message;
         }
 
@@ -80,7 +78,7 @@ public partial class ContestDetails : IDisposable
         {
             Year = contest.Year,
             DateTime = GetDateTime(contest.Rounds),
-            Country = contest.Country,
+            Country = contest.HostCountry,
             City = contest.City,
             Location = GetLocation(contest),
             Slogan = contest.Slogan,
@@ -111,15 +109,16 @@ public partial class ContestDetails : IDisposable
             Round round = rounds[i];
 
             if (i < rounds.Count - 1)
-                stringBuilder.Append(round.Date.Day + ", ");
+                stringBuilder.Append(round.Date.Day + " / ");
             else
             {
                 stringBuilder.Append(round.Date.ToString("d MMMM yyyy"));
+                TimeOnly? time = round.Time;
 
-                if (round.Time.HasValue) 
+                if (time.HasValue)
                 {
-                    stringBuilder.Append(" ");
-                    stringBuilder.Append(round.Time.Value.ToString("0:00 UTC")); 
+                    stringBuilder.Append(", ");
+                    stringBuilder.Append($"{time:hh:mm} UTC");
                 }
             }
         }
@@ -131,8 +130,7 @@ public partial class ContestDetails : IDisposable
     {
         StringBuilder stringBuilder = new StringBuilder();
 
-        if (string.IsNullOrEmpty(contest.Arena))
-            stringBuilder.Append(contest.Arena + ", ");
+        if (string.IsNullOrEmpty(contest.Arena)) stringBuilder.Append(contest.Arena + ", ");
         stringBuilder.Append(contest.City + ", ");
         stringBuilder.Append(Repository.Countries[contest.Country]);
 

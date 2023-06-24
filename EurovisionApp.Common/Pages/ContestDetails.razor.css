@@ -1,4 +1,8 @@
-﻿.title {
+﻿#main {
+    max-width: 850px;
+}
+
+.title {
     font-size: 1.5rem;
     margin: 20px 0;
 }
@@ -15,11 +19,6 @@
     border-radius: 20px;
     padding: 10px;
     width: 100%;
-}
-
-.mensage-cancelation {
-    margin: auto;
-    font-weight: bold;
 }
 
 .logo {
@@ -82,6 +81,10 @@
 
 ::deep .quickgrid tbody tr:nth-child(even) {
   background-color: #00000015;
+}
+
+::deep .quickgrid tbody tr:hover {
+  background-color: #0000ff10;
 }
 
 ::deep .quickgrid td {

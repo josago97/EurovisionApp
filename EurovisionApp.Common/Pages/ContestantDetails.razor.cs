@@ -46,7 +46,7 @@ public partial class ContestantDetails
         for (int i = 0; i < contest.Rounds.Count; i++)
         {
             Round round = contest.Rounds[i];
-            Performance performance = round.Performances.FirstOrDefault(p => p.ContestantId == contestantId);
+            Performance performance = round.Performances?.FirstOrDefault(p => p.ContestantId == contestantId);
 
             if (performance != null)
             {

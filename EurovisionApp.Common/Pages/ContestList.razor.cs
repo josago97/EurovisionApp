@@ -32,12 +32,13 @@ public partial class ContestList
         for (int i = 0; i < contests.Count; i++)
         {
             var contest = contests[i];
+            string countryCode = contest.HostCountry;
 
             result.Add(new ContestData()
             {
                 Id = i,
-                CountryCode = contest.Country,
-                CountryName = Repository.Countries[contest.Country],
+                CountryCode = countryCode,
+                CountryName = Repository.Countries[countryCode],
                 City = contest.City,
                 Year = contest.Year
             });
