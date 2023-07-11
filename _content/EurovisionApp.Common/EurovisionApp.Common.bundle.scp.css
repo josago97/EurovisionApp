@@ -389,37 +389,25 @@ input[b-8jkh0kaqiz] {
     100% { transform: rotate(360deg); }
 } 
 /* _content/EurovisionApp.Common/Shared/NavMenu.razor.rz.scp.css */
-.navbar[b-mv5irjltva] {
+header[b-mv5irjltva] {
     --header-size: 70px;
-
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-auto-rows: 100%;
+    justify-content: space-between;
+    height: 70px;
     background-color: darkblue;
     color: white;
-    font-family: Eurovision;
-    font-size: 2em;
-
-    /* Disable bootstrap */
-    padding: 0;
-    align-items: initial;
 }
 
-.navbar *[b-mv5irjltva] {
-    color: inherit;
-}
-
-.header[b-mv5irjltva] {
-    display: grid;
-    width: 100%;
-    grid-template-columns: repeat(2, auto);
-    grid-template-rows: 100%;
-    justify-content: space-between;
-    height: var(--header-size);
-}
-
-.header > div:nth-child(1)[b-mv5irjltva] {
+.head[b-mv5irjltva] {
     display: flex;
-    flex-flow: row;
+    flex-direction: row;
+}
+
+.logo[b-mv5irjltva] {
+    margin: auto 0;
+    height: 75%;
 }
 
 /*========== Go Back Button =========*/
@@ -431,9 +419,9 @@ input[b-8jkh0kaqiz] {
 
     border: 0px;
     background-color: #ffffff55;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: var(--icon-width);
     height: 100%;
     cursor: pointer;
@@ -483,23 +471,11 @@ input[b-8jkh0kaqiz] {
 
 /*=============================================*/
 
-
-.title[b-mv5irjltva] {
-    padding: 5px 0px;
-    display: flex;
-    height: 100%;
-}
-
-.title img[b-mv5irjltva] {
-    margin: auto;
-    min-height: calc(var(--header-size) * 0.6);
-    height: 1.75em;
-}
-
-
 /*=================== Navbar Toggler ==================*/
 
 .navbar-toggler[b-mv5irjltva] {
+    display: flex;
+    justify-content: center;
     margin: 15px;
     padding: 2px 10px;
     line-height: 1;
@@ -507,8 +483,6 @@ input[b-8jkh0kaqiz] {
     border: 2px solid white;
     border-radius: 0.2em;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
 }
 
 /*========== Burguer Button =========*/
@@ -560,22 +534,41 @@ input[b-8jkh0kaqiz] {
 
 /*=============================================*/
 
-.navbar-list[b-mv5irjltva] {
+/*===================== Links ======================*/
+
+.link-list[b-mv5irjltva] {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     height: 100%;
     width: 100%;
+    font-family: Eurovision;
+    font-size: 22pt;
+    grid-column: span 2;
+    z-index: 100;
 }
 
 .link[b-mv5irjltva] {
+    --border-size: 40px;
+
+    position: relative;
     display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: center; 
-    padding: 0.25em 1em;
+    padding: 10px 20px;
     width: 100%;
+    height: 100%;
     background: var(--background-color);
-    color: inherit;
     text-decoration: none;
+}
+
+.link[b-mv5irjltva]::before {
+    content: "";
+    position: absolute;
+    border-left: var(--border-size) solid transparent;
+    border-right: 0px solid transparent;
+    border-top: var(--header-size) solid var(--background-color);
+    left: calc(var(--border-size) * -1);
+    top: 0;
 }
 
 .link:hover[b-mv5irjltva] {
@@ -591,60 +584,33 @@ input[b-8jkh0kaqiz] {
     --background-color: #9933FF;
 }
 
+.link:not(:last-of-type)[b-mv5irjltva]::after {
+    content: "";
+    position: absolute;
+    border-right: var(--border-size) solid transparent;
+    border-left: 0px solid transparent;
+    border-bottom: var(--header-size) solid var(--background-color);
+    right: calc(var(--border-size) * -1);
+    bottom: 0;
+}
+
+.link-2[b-mv5irjltva] {
+    margin-left: calc(var(--border-size) - 1px);
+}
+
 .collapse[b-mv5irjltva] {
     display: none;
 }
 
+/*=================================================*/
+
 @media (min-width: 500px) {
-    .navbar[b-mv5irjltva] {
-        display: grid;
-        grid-template-columns: 1fr auto auto;
-    }
-
-    .header[b-mv5irjltva] {
-        display: inherit;
-    }
-
     .navbar-toggler[b-mv5irjltva] {
         display: none;
     }
 
-    .navbar-list[b-mv5irjltva] {
-        flex-direction: row;
-        font-size: inherit;
-    }
-
-    .link[b-mv5irjltva] {
-        --border-size: 40px;
-
-        position: relative;
-    }
-
-    .link[b-mv5irjltva]::before {
-        content: "";
-        position: absolute;
-        border-left: var(--border-size) solid transparent;
-        border-right: 0px solid transparent;
-        border-top: var(--header-size) solid var(--background-color);
-        left: calc(var(--border-size) * -1);
-        top: 0;
-    }
-
-    .link:not(:last-of-type)[b-mv5irjltva]::after {
-        content: "";
-        position: absolute;
-        border-right: var(--border-size) solid transparent;
-        border-left: 0px solid transparent;
-        border-bottom: var(--header-size) solid var(--background-color);
-        right: calc(var(--border-size) * -1);
-        bottom: 0;
-    }
-
-    .link-2[b-mv5irjltva] {
-        margin-left: calc(var(--border-size) - 1px);
-    }
-
-    .collapse[b-mv5irjltva] {
-        display: initial !important;
+    .link-list[b-mv5irjltva] {
+        display: flex !important;
+        grid-column: span 1;
     }
 }

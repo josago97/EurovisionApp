@@ -10,7 +10,7 @@
       "BlazorPro.BlazorSize.dll": "sha256-sJFtsHV1rTpSYz7j1g\/fdUpSiYnWTeFY2hrADmMqRQ4=",
       "BootstrapBlazor.dll": "sha256-WRy4Ew2HEVOfDpKg28GM+Wu3hhrLIJdWR06NqqejYxc=",
       "BootstrapBlazor.FontAwesome.dll": "sha256-FeViLWzusGWI5CK5bCmEn8EGaPKZJHOT1nZlxWJWXmU=",
-      "EurovisionApp.Common.dll": "sha256-g7eOuPcbzF15sk0HuN3cHpC6lSEQaQw6mVyB06HOJhY=",
+      "EurovisionApp.Common.dll": "sha256-HRa5KW1Jy7lQuu+4J2gvXP\/DqPHdvmk79qiOeGbMsEA=",
       "EurovisionApp.Wasm.dll": "sha256-v7QLWAptjqZYpS63UBEWswjKujCNuy3NuOizex3l\/JE=",
       "Microsoft.AspNetCore.Authorization.dll": "sha256-Cuw6Hd9F\/aAIjaQxhT1dDknIVIKZloTd2IeHn1MOpA4=",
       "Microsoft.AspNetCore.Components.Authorization.dll": "sha256-nErLzm3Ne85KU9psLS6+yjDNqEjtoDUPINJTdVh8a\/s=",
@@ -92,12 +92,12 @@
     "runtime": {
       "dotnet.7.0.9.qkfmj81bw1.js": "sha256-VWyPENMs38ducqgcP2J\/uHZHetS8dQnmP9CnjcFccVs=",
       "dotnet.timezones.blat": "sha256-dKqztlnWPN3rvLJRCI444rLYX55dtIQt\/DQkFslO+z4=",
-      "dotnet.wasm": "sha256-yqcs3Rn1jO8CV9JiigK1dF8eIEKv3PohbauSkPa1tcw="
+      "dotnet.wasm": "sha256-4hzUWi8bRMo3RFcVPoo6jcSW4\/HTQFCPLWpO+KZN92I="
     },
     "runtimeAssets": {
       "dotnet.wasm": {
         "behavior": "dotnetwasm",
-        "hash": "sha256-yqcs3Rn1jO8CV9JiigK1dF8eIEKv3PohbauSkPa1tcw="
+        "hash": "sha256-4hzUWi8bRMo3RFcVPoo6jcSW4\/HTQFCPLWpO+KZN92I="
       }
     },
     "satelliteResources": null
