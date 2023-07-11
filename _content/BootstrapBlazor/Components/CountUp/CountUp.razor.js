@@ -1,5 +1,5 @@
-﻿import { CountUp } from "../../lib/countUp/countUp.min.js?v=7.7.5"
-import Data from "../../modules/data.js?v=7.7.5"
+﻿import { CountUp } from "../../lib/countUp/countUp.min.js?v=7.8.4"
+import Data from "../../modules/data.js?v=7.8.4"
 
 export function init(id, invoke, val, callback) {
     var count = { invoke, callback }

@@ -1,5 +1,5 @@
-﻿import { isElement } from "./utility.js?v=7.7.5"
-import Data from "./data.js?v=7.7.5"
+﻿import { isElement } from "./utility.js?v=7.8.4"
+import Data from "./data.js?v=7.8.4"
 
 export function init(id) {
     const fs = {}

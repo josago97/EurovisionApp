@@ -1,6 +1,6 @@
-﻿import Data from "../../modules/data.js?v=7.7.5"
-import EventHandler from "../../modules/event-handler.js?v=7.7.5"
-import Popover from "../../modules/base-popover.js?v=7.7.5"
+﻿import Data from "../../modules/data.js?v=7.8.4"
+import EventHandler from "../../modules/event-handler.js?v=7.8.4"
+import Popover from "../../modules/base-popover.js?v=7.8.4"
 
 export function init(id) {
     const el = document.getElementById(id)
@@ -40,13 +40,21 @@ export function init(id) {
             buttons.item(1).click()
         }
     });
+
+    // hack input in modal
+    tableFilter.body = el.querySelector('.card-body')
+    EventHandler.on(tableFilter.body, 'focusin', 'input', e => {
+        e.stopPropagation()
+    })
 }
 
 export function dispose(id) {
-    const data = Data.get(id)
-    if (data) {
-        EventHandler.off(data.action, 'click', data.dismissSelector)
-        Popover.dispose(data.dropdown)
-    }
+    const tableFilter = Data.get(id)
     Data.remove(id)
+
+    if (tableFilter) {
+        EventHandler.off(tableFilter.action, 'click', tableFilter.dismissSelector)
+        Popover.dispose(tableFilter.dropdown)
+        EventHandler.off(tableFilter.body, 'focusin')
+    }
 }

@@ -1,5 +1,5 @@
-﻿import Data from "../../modules/data.js?v=7.7.5"
-import Drag from "../../modules/drag.js?v=7.7.5"
+﻿import Data from "../../modules/data.js?v=7.8.4"
+import Drag from "../../modules/drag.js?v=7.8.4"
 
 export function init(id, invoke, callback) {
     const el = document.getElementById(id)

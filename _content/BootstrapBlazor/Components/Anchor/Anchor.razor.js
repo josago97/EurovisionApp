@@ -1,5 +1,5 @@
-﻿import { getDescribedElement, getWindowScroll } from "../../modules/utility.js?v=7.7.5"
-import EventHandler from "../../modules/event-handler.js?v=7.7.5"
+﻿import { getDescribedElement, getWindowScroll } from "../../modules/utility.js?v=7.8.4"
+import EventHandler from "../../modules/event-handler.js?v=7.8.4"
 
 export function init(id) {
     const el = document.getElementById(id)
