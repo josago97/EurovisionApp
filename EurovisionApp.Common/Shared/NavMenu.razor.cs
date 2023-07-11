@@ -1,32 +1,31 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Routing;
 
-namespace EurovisionApp.Common.Shared
+namespace EurovisionApp.Common.Shared;
+
+public partial class NavMenu
 {
-    public partial class NavMenu
+    private bool collapseNavMenu = true;
+
+    [Inject]
+    public Navigator Navigator { get; set; }
+    private string GoBackButtonCssClass => !Navigator.CanNavigateBack ? "hide" : null;
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    protected override void OnInitialized()
     {
-        private bool collapseNavMenu = true;
+        base.OnInitialized();
 
-        [Inject]
-        public Navigator Navigator { get; set; }
-        private string GoBackButtonCssClass => !Navigator.CanNavigateBack ? "hide" : null;
-        private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+        Navigator.LocationChanged += OnNavigated; 
+    }
 
-        protected override void OnInitialized()
-        {
-            base.OnInitialized();
+    private void OnNavigated(object sender, LocationChangedEventArgs e)
+    {
+        StateHasChanged();
+    }
 
-            Navigator.LocationChanged += OnNavigated; 
-        }
-
-        private void OnNavigated(object sender, LocationChangedEventArgs e)
-        {
-            StateHasChanged();
-        }
-
-        private void ToggleNavMenu()
-        {
-            collapseNavMenu = !collapseNavMenu;
-        }
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
     }
 }
