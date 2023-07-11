@@ -62,49 +62,57 @@
             }
             
         </div>
+    </div>
 
-        @foreach (var round in Rounds)
+    <div class="other-data">
+        @if (Contestant.MusicSheet != null)
         {
-            string placeClass = round.Place switch
-            {
-                1 => "first-place",
-                2 => "second-place",
-                3 => "third-place",
-                _ => ""
-            };
-
-            <div class="round-result @placeClass">
-                <p>@round.Name</p>
-                <div>
-                    <div>PLACE</div>
-                    <div>@round.Place / @round.Contestants</div>
-                    <div>POINTS</div>
-                    <div>@round.Points</div>
+            <div class="music-sheet">
+                <div class="contest-data">
+                    @if (Contestant.MusicSheet.Bpm.HasValue)
+                    {
+                        <p><span class="data-entry">Beats per minute:</span> @Contestant.MusicSheet.Bpm</p>
+                    }
+                    @if (!string.IsNullOrEmpty(Contestant.MusicSheet.Tone))
+                    {
+                        <p><span class="data-entry">Tone:</span> @Contestant.MusicSheet.Tone</p>
+                    }
                 </div>
-                <div>RUNNING ORDER: @round.Running</div>
+
+                @Contestant.MusicSheet.ArmorMusicSheet
             </div>
         }
 
-        
-    </div>
-
-    @if (Contestant.MusicSheet != null)
-    {
-        <div class="music-sheet">        
-            <div class="contest-data">
-                @if (Contestant.MusicSheet.Bpm.HasValue)
+        <div class="results">
+            @foreach (RoundData round in Rounds)
+            {
+                string placeClass = round.Place switch
                 {
-                    <p><span class="data-entry">Beats per minute:</span> @Contestant.MusicSheet.Bpm</p>
-                }
-                @if (!string.IsNullOrEmpty(Contestant.MusicSheet.Tone))
-                {
-                    <p><span class="data-entry">Tone:</span> @Contestant.MusicSheet.Tone</p>
-                }
-            </div>
+                    1 => "first-place",
+                    2 => "second-place",
+                    3 => "third-place",
+                    _ => ""
+                };
 
-            @Contestant.MusicSheet.ArmorMusicSheet
+                <div class="round-result @placeClass">
+                    <span class="name">@round.Name</span>
+                    <div>
+                        <div>
+                            <span>PLACE</span>
+                            @round.Place
+                            <small>/ @round.ContestantsCount</small>
+                        </div>
+                        <div>
+                            <span>POINTS</span>
+                            @round.Points
+                        </div>
+                    </div>
+                    <span>RUNNING ORDER: @round.Running</span>
+                </div>
+            }
+
         </div>
-    }
+    </div>
 
     @if (!Contestant.Lyrics.IsNullOrEmpty())
     {

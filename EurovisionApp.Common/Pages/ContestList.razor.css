@@ -10,12 +10,23 @@
     text-align: center;
 }
 
+.input-container {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+
+    font-size: 1.25em; 
+}
+
 input {
-    box-sizing: border-box;
     width: 100%;
     padding: 5px 15px 5px 15px;
-    font-size: 1.4rem;
     border-radius: 100px;
+}
+
+.order-button {
+    border-radius: 10px;
+    white-space: nowrap;
 }
 
 .contest-list {

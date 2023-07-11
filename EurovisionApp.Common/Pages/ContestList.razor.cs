@@ -3,9 +3,15 @@ namespace EurovisionApp.Common.Pages;
 
 public partial class ContestList
 {
+    private enum Order { Ascending, Descending };
+
+    private const Order DEAFULT_ORDER = Order.Ascending;
+
     private string Title { get; set; }
     private IEnumerable<ContestData> AllContests { get; set; }
     private new IEnumerable<ContestData> Contests { get; set; }
+    private Order ContestsOrder { get; set; }
+    private string ContestOrderArrow { get; set; }
 
     protected override void OnParametersSet()
     {
@@ -23,6 +29,8 @@ public partial class ContestList
         }
 
         Contests = AllContests = GetContests(base.Contests);
+        ContestsOrder = DEAFULT_ORDER;
+        UpdateContestList(false);
     }
 
     private IEnumerable<ContestData> GetContests(IReadOnlyList<Contest> contests)
@@ -61,6 +69,31 @@ public partial class ContestList
         }
 
         Contests = result;
+
+        UpdateContestList(true);
+    }
+
+    private void ChangeOrder()
+    {
+        ContestsOrder = ContestsOrder == Order.Ascending 
+            ? Order.Descending 
+            : Order.Ascending;
+
+        UpdateContestList(false);
+    }
+
+    private void UpdateContestList(bool queryChanged)
+    {
+        if (ContestsOrder == Order.Ascending)
+        {
+            Contests = Contests.OrderBy(c => c.Year);
+            ContestOrderArrow = "down";
+        }
+        else
+        {
+            Contests = Contests.OrderByDescending(c => c.Year);
+            ContestOrderArrow = "up";
+        }
     }
 
     private class ContestData

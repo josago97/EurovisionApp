@@ -50,6 +50,20 @@
     <script src="_framework/blazor.webassembly.js"></script>
     <script>navigator.serviceWorker.register('service-worker.js');</script>
     <script src="_content/BootstrapBlazor/js/bootstrap.blazor.bundle.min.js"></script>
+
+    <!-- Enable smooth scroll behaviour when back -->
+    <script>
+        navigation.addEventListener('navigate', (event) => {
+            console.log(event);
+
+            if (event.navigationType && event.navigationType === "push") {
+                document.documentElement.style.scrollBehavior = 'auto';
+            } else {
+                document.documentElement.style.scrollBehavior = '';
+            }
+        });
+    </script>
+
 </body>
 
 </html>

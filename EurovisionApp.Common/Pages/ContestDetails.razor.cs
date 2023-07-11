@@ -118,7 +118,7 @@ public partial class ContestDetails : IDisposable
                 if (time.HasValue)
                 {
                     stringBuilder.Append(", ");
-                    stringBuilder.Append($"{time:hh:mm} UTC");
+                    stringBuilder.Append($"{time:H:mm} UTC");
                 }
             }
         }

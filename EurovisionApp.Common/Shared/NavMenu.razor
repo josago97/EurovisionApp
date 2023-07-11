@@ -1,13 +1,13 @@
 ﻿<div class="navbar">
     <div class="header">
         <div>
-            <a class="go-back-button @GoBackButtonCssClass" href="@Navigator.LastUrl">
+            <button class="go-back-button @GoBackButtonCssClass" @onclick="@Navigator.GoBackAsync">
                 <div class="go-back-button-row">
                     <div></div>
                     <div></div>
                     <div></div>
                 </div>
-            </a>
+            </button>
             <div class="title">
                 <img src="@Utils.GetStaticFileUrl("images/eurovision_logo.png")"/>
             </div>
@@ -22,15 +22,13 @@
         </div>
     </div>
 
-    <div class="@NavMenuCssClass">
-        <div class="navbar-list">
-            <a class="link link-1" href="senior">
-                <div>Senior</div>
-            </a>
-            <a class="link link-2" href="junior">
-                <div>Junior</div>
-            </a>
-        </div>
+    <div class="navbar-list @NavMenuCssClass">
+        <a class="link link-1" href="senior">
+            <div>Senior</div>
+        </a>
+        <a class="link link-2" href="junior">
+            <div>Junior</div>
+        </a>
     </div>
 </div>
 

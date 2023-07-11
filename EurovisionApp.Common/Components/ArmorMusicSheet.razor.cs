@@ -16,7 +16,7 @@ public partial class ArmorMusicSheet
     private const string MUSIC_FONT = "Polihymnia";
     private const int TEMPO_POSITION_Y = 10;
     private const int STAFF_POSITION_Y = TEMPO_POSITION_Y + 15;
-    private const int STAFF_WIDTH = 100;
+    private const int STAFF_WIDTH = 110;
     private const int STAFF_SPACE = 6;
     private static readonly Notes[] SHARPS_ORDER = { Notes.C, Notes.G, Notes.D, Notes.A, Notes.E, Notes.B, Notes.FSharp, Notes.CSharp };
     private static readonly double[] SHARP_POSITIONS = { 0, 1.5, -0.5, 1, 2.5, 0.5, 2 }; // F C G D A E B

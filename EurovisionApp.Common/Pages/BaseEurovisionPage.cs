@@ -7,11 +7,7 @@ namespace EurovisionApp.Common.Pages;
 
 public abstract class BaseEurovisionPage : ComponentBase, IDisposable
 {
-    protected enum PageType
-    {
-        Junior,
-        Senior
-    }
+    protected enum PageType { Junior, Senior }
 
     [Inject]
     public NavigationManager NavigationManager { get; set; }

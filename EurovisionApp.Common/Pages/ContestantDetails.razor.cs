@@ -54,7 +54,7 @@ public partial class ContestantDetails
                 {
                     Name = Utils.GetDisplayRoundName(round.Name),
                     Place = performance.Place,
-                    Contestants = round.Performances.Count,
+                    ContestantsCount = round.Performances.Count,
                     Points = performance.Scores.Count > 0
                         ? performance.Scores.Sum(s => s.Points)
                         : null,
@@ -133,10 +133,13 @@ public partial class ContestantDetails
             ArmorMusicSheet.Scales scale = toneAndScaleName[1].Equals("minor", StringComparison.OrdinalIgnoreCase)
                 ? ArmorMusicSheet.Scales.Minor
                 : ArmorMusicSheet.Scales.Major;
+            string toneDisplay = toneAndScaleName[0];
+            string scaleDisplay = toneAndScaleName[1];
+            if (scale == ArmorMusicSheet.Scales.Major) scaleDisplay = scaleDisplay.ToTitleCase(); 
 
             result = new MusicSheet()
             {
-                Tone = $"{toneAndScaleName[0]} {toneAndScaleName[1].ToTitleCase()}",
+                Tone = $"{toneDisplay} {scaleDisplay}",
                 Bpm = contestant.Bpm,
                 ArmorMusicSheet = new RenderFragment(builder =>
                 {
@@ -151,22 +154,6 @@ public partial class ContestantDetails
 
         return result;
     }
-
-    private RenderFragment CreateArmorMusicSheet() => builder =>
-    {
-        string[] toneAndScaleName = Contestant.Tone.Split();
-        string toneName = toneAndScaleName[0].Replace("b", "Flat").Replace("#", "Sharp");
-        ArmorMusicSheet.Notes tone = Enum.Parse<ArmorMusicSheet.Notes>(toneName, true);
-        ArmorMusicSheet.Scales scale = toneAndScaleName[1].Equals("minor", StringComparison.OrdinalIgnoreCase) 
-            ? ArmorMusicSheet.Scales.Minor 
-            : ArmorMusicSheet.Scales.Major;
-
-        builder.OpenComponent(0, typeof(ArmorMusicSheet));
-        builder.AddAttribute(1, nameof(ArmorMusicSheet.Tempo), Contestant.Bpm);
-        builder.AddAttribute(2, nameof(ArmorMusicSheet.Tone), tone);
-        builder.AddAttribute(3, nameof(ArmorMusicSheet.Scale), scale);
-        builder.CloseComponent();
-    };
 
     // Columns / Paragraph / Line
     private string[][][] GetLyricsColumns()
@@ -226,7 +213,7 @@ public partial class ContestantDetails
     {
         public string Name { get; set; }
         public int Place { get; set; }
-        public int Contestants { get; set; }
+        public int ContestantsCount { get; set; }
         public int? Points { get; set; }
         public int? Running { get; set; }
     }
@@ -261,7 +248,5 @@ public partial class ContestantDetails
         public string Tone { get; set; }
         public int? Bpm { get; set; }
         public RenderFragment ArmorMusicSheet { get; set; }
-        ArmorMusicSheet.Notes ArmorTone { get; set; }
-        ArmorMusicSheet.Scales ArmorScale { get; set; }
     }
 }

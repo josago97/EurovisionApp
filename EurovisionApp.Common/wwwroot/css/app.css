@@ -5,6 +5,7 @@
 
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -82,22 +83,6 @@ select:hover {
 /*---------------------------------*/
 
 
-
-/*----------- Podium -------------*/
-
-.first-place {
-    background-color: #FFD700C0;
-}
-
-.second-place {
-    background-color: #C0C0C0C0;
-}
-
-.third-place {
-    background-color: #CB6D51C0;
-}
-
-/*---------------------------------*/
 
 /*------------- Fonts --------------*/
 

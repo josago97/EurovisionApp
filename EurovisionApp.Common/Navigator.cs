@@ -1,12 +1,15 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Routing;
+using Microsoft.JSInterop;
 
 namespace EurovisionApp.Common;
 
 public class Navigator : IDisposable
 {
     private static readonly string[] BASE_URL = new[] { "junior", "senior" };
+
     private readonly NavigationManager _navigationManager;
+    private readonly IJSRuntime _jsRuntime;
     private readonly List<string> _history;
 
     /// <summary>
@@ -24,9 +27,10 @@ public class Navigator : IDisposable
     /// </summary>
     public event EventHandler<LocationChangedEventArgs> LocationChanged;
 
-    public Navigator(NavigationManager navigationManager)
+    public Navigator(NavigationManager navigationManager, IJSRuntime jsRuntime)
     {
         _navigationManager = navigationManager;
+        _jsRuntime = jsRuntime;
         _history = new List<string>();
         AddUrl(_navigationManager.Uri);
         _navigationManager.LocationChanged += OnLocationChanged;
@@ -44,12 +48,9 @@ public class Navigator : IDisposable
     /// <summary>
     /// Navigates to the previous url if possible or does nothing if it is not.
     /// </summary>
-    public void NavigateBack()
+    public async Task GoBackAsync()
     {
-        if (CanNavigateBack)
-        {
-            _navigationManager.NavigateTo(LastUrl);
-        }
+        await _jsRuntime.InvokeVoidAsync("history.back");
     }
 
     private void OnLocationChanged(object sender, LocationChangedEventArgs e)
